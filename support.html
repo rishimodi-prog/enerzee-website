@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support — EnerZee</title>
-  <meta name="description" content="Get help with EnerZee — FAQs, contact information, and support resources." />
+  <title>Support â EnerZee</title>
+  <meta name="description" content="Get help with EnerZee â FAQs, contact information, and support resources." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -125,7 +125,7 @@
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
           What is EnerZee? <span class="arrow">&#x25BC;</span>
         </div>
-        <div class="faq-a"><p>EnerZee is an AI-powered fitness and nutrition app. It combines a personal AI coach (Pulse), smart meal plans, intelligent workout programming, food logging, wearable integration, and detailed progress analytics — all in one app.</p></div>
+        <div class="faq-a"><p>EnerZee is an AI-powered fitness and nutrition app. It combines a personal AI coach (Pulse), smart meal plans, intelligent workout programming, food logging, wearable integration, and detailed progress analytics â all in one app.</p></div>
       </div>
 
       <div class="faq-item">
@@ -153,7 +153,7 @@
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
           How does the AI coach work? <span class="arrow">&#x25BC;</span>
         </div>
-        <div class="faq-a"><p>Pulse is your personal AI fitness coach. Just tell it what you ate or did in natural language — "Had grilled chicken and rice for lunch" — and it logs everything automatically. You can also ask Pulse to swap meals, modify workouts, answer nutrition questions, and review your weekly progress.</p></div>
+        <div class="faq-a"><p>Pulse is your personal AI fitness coach. Just tell it what you ate or did in natural language â "Had grilled chicken and rice for lunch" â and it logs everything automatically. You can also ask Pulse to swap meals, modify workouts, answer nutrition questions, and review your weekly progress.</p></div>
       </div>
 
       <div class="faq-item">
@@ -167,7 +167,7 @@
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
           Can I cancel my subscription? <span class="arrow">&#x25BC;</span>
         </div>
-        <div class="faq-a"><p>Yes, you can cancel anytime through your Apple App Store or Google Play Store subscription settings. Your Pro features will remain active until the end of your current billing period. After that, your account reverts to the Free tier — no data is lost.</p></div>
+        <div class="faq-a"><p>Yes, you can cancel anytime through your Apple App Store or Google Play Store subscription settings. Your Pro features will remain active until the end of your current billing period. After that, your account reverts to the Free tier â no data is lost.</p></div>
       </div>
 
       <div class="faq-item">
@@ -234,16 +234,42 @@
   <script>
     function handleContact(e) {
       e.preventDefault();
-      // In production, POST to your API or Supabase
+      const btn = e.target.querySelector('.submit-btn');
+      const origText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
       const data = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         topic: document.getElementById('topic').value,
         message: document.getElementById('message').value,
+        _subject: 'EnerZee Contact: ' + document.getElementById('topic').value,
+        _replyto: document.getElementById('email').value,
+        _template: 'table'
       };
-      console.log('Contact form:', data);
-      e.target.style.display = 'none';
-      document.getElementById('contactSuccess').style.display = 'block';
+
+      fetch('https://formsubmit.co/ajax/support@enerzee.app', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(r => r.json())
+      .then(resp => {
+        if (resp.success) {
+          e.target.style.display = 'none';
+          document.getElementById('contactSuccess').style.display = 'block';
+        } else {
+          btn.textContent = origText;
+          btn.disabled = false;
+          alert('Something went wrong. Please try again.');
+        }
+      })
+      .catch(() => {
+        btn.textContent = origText;
+        btn.disabled = false;
+        alert('Network error. Please check your connection and try again.');
+      });
     }
   </script>
 </body>
