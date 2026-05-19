@@ -112,8 +112,8 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .nav-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 600; font-size: 19px; color: var(--ink); letter-spacing: -0.01em; }
-    .nav-brand img { height: 28px; width: auto; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
+    .nav-brand img { height: 32px; width: auto; display: block; }
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-links a { font-size: 14.5px; color: var(--text-muted); transition: color 160ms ease; }
     .nav-links a:hover { color: var(--ink); }
@@ -192,6 +192,17 @@
       padding: 160px 0 110px;
       position: relative;
       overflow: hidden;
+    }
+    .hero-mark {
+      width: 88px;
+      height: 88px;
+      margin-bottom: 28px;
+      filter: drop-shadow(0 8px 24px rgba(126, 106, 246, 0.35));
+    }
+    .hero-mark.static { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-mark.motion { display: none; }
+      .hero-mark.static { display: block; }
     }
     .hero::before {
       content: '';
@@ -277,15 +288,22 @@
       margin-bottom: 20px;
     }
     .demo-avatar {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--infinity-violet), var(--mint));
+      background: radial-gradient(circle at 30% 30%, rgba(126, 106, 246, 0.45), rgba(18, 35, 29, 0.85));
       display: grid;
       place-items: center;
       flex-shrink: 0;
+      overflow: hidden;
+      border: 1px solid rgba(169, 151, 255, 0.30);
     }
-    .demo-avatar img { width: 22px; height: 22px; }
+    .demo-avatar img { width: 32px; height: 32px; }
+    .demo-avatar .static { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .demo-avatar .motion { display: none; }
+      .demo-avatar .static { display: block; }
+    }
     .demo-card-title { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--text-on-dark); }
     .demo-card-title small { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted-on-dark); font-weight: 400; margin-top: 2px; }
 
@@ -867,14 +885,15 @@
     .footer-brand-mark {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-family: var(--font-display);
       font-weight: 600;
-      font-size: 18px;
+      font-size: 22px;
       color: var(--text-on-dark);
+      letter-spacing: -0.01em;
       margin-bottom: 14px;
     }
-    .footer-brand-mark img { height: 26px; }
+    .footer-brand-mark img { height: 36px; width: auto; display: block; }
     .footer-brand p { font-size: 14.5px; line-height: 1.6; }
     .footer-col h4 {
       font-family: var(--font-mono);
@@ -920,8 +939,7 @@
   <nav>
     <div class="container nav-inner">
       <a href="/" class="nav-brand" aria-label="EnerZee home">
-        <img src="/assets/logo-mono-sage.png" alt="" />
-        <span>EnerZee</span>
+        <img src="/assets/lockup-horizontal.png" alt="EnerZee" />
       </a>
       <div class="nav-links" id="navLinks">
         <a href="#how">How it thinks</a>
@@ -940,6 +958,8 @@
     <div class="container">
       <div class="hero-grid">
         <div>
+          <img class="hero-mark motion" src="/assets/infinity-splash-dark.gif" alt="EnerZee infinity mark" />
+          <img class="hero-mark static" src="/assets/infinity-static-dark.png" alt="EnerZee infinity mark" />
           <span class="eyebrow">Premium AI Fitness Coach · TestFlight Now Open</span>
           <h1>The fitness app that <span class="accent">actually thinks.</span></h1>
           <p class="hero-subhead">Multi-stage AI coaching with shipped memory, science citations, and an accountability loop.</p>
@@ -958,7 +978,10 @@
         <div>
           <div class="demo-card">
             <div class="demo-card-header">
-              <div class="demo-avatar"><img src="/assets/infinity-static-dark.png" alt="" /></div>
+              <div class="demo-avatar">
+                <img class="motion" src="/assets/coach-loop-dark.gif" alt="" />
+                <img class="static" src="/assets/infinity-static-dark.png" alt="" />
+              </div>
               <div class="demo-card-title">
                 Pulse · EnerZee Coach
                 <small>online · reasoning live</small>
@@ -1080,7 +1103,7 @@
       <div class="section-head">
         <span class="eyebrow">Auditable</span>
         <h2>The only AI coach with an academic scorecard.</h2>
-        <p>Most fitness apps say they're "science-backed." We grade ourselves on it. The EnerZee Coach Reasoning Scorecard is a measurable rubric covering literature grounding, memory provenance, self-critique, safety protocols, and outcome learning. Right now we score 9.5 out of 10. The remaining 0.5 is reserved for a live proof gate we're closing this quarter.</p>
+        <p>Most fitness apps say they're "science-backed." We grade ourselves on it. The EnerZee Coach Reasoning Scorecard is a measurable rubric covering literature grounding, memory provenance, self-critique, safety protocols, and outcome learning. Right now we score 9.5 out of 10 and have 6,022 papers indexed across 1,461 journals — every claim can cite back. The remaining 0.5 is reserved for a live proof gate we're closing this quarter.</p>
       </div>
       <div class="stat-row">
         <div class="stat-card">
@@ -1090,8 +1113,8 @@
         </div>
         <div class="stat-card">
           <div class="stat-label">Research papers indexed</div>
-          <div class="stat-value">2,000<span style="font-size: 22px; color: var(--text-muted);">+</span></div>
-          <div class="stat-sub">Cited inline, click to read</div>
+          <div class="stat-value">6,022</div>
+          <div class="stat-sub">From 1,461 journals — cited inline, click to read</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">Cross-model food checks</div>
@@ -1287,7 +1310,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-brand-mark">
-            <img src="/assets/logo-mono-sage.png" alt="" />
+            <img src="/assets/logo-dark-surface.png" alt="" />
             <span>EnerZee</span>
           </div>
           <p>Built with research, memory, and a working scorecard.</p>
