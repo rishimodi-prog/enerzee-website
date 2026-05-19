@@ -728,6 +728,32 @@
     }
     .pricing-card.featured .pricing-feature { border-color: rgba(242, 239, 231, 0.08); }
 
+    .pricing-grid-solo { grid-template-columns: 1fr; max-width: 640px; }
+    .pricing-card.free-solo {
+      background: var(--ink);
+      color: var(--text-on-dark);
+      border-color: transparent;
+      padding: 40px 36px;
+    }
+    .pricing-card.free-solo h3 { color: var(--text-on-dark); font-family: var(--font-display); font-size: clamp(26px, 3vw, 32px); line-height: 1.2; margin: 14px 0 12px; }
+    .pricing-card.free-solo .price-sub { color: var(--text-muted-on-dark); font-size: 15px; margin-bottom: 20px; }
+    .pricing-card.free-solo .pricing-feature { color: var(--text-on-dark); border-color: rgba(242, 239, 231, 0.08); font-size: 15.5px; padding: 12px 0; }
+    .pricing-card.free-solo .pricing-tag {
+      position: static;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .pricing-card.free-solo .pro-hint {
+      margin-top: 24px;
+      padding: 18px 20px;
+      background: rgba(247, 243, 235, 0.04);
+      border: 1px solid var(--border-on-dark);
+      border-radius: 14px;
+      font-size: 14.5px;
+      color: var(--text-muted-on-dark);
+      line-height: 1.6;
+    }
+
     .pricing-trust {
       text-align: center;
       margin-top: 36px;
@@ -1171,16 +1197,15 @@
   <section class="section pricing-section" id="pricing">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Pricing preview</span>
+        <span class="eyebrow">Free to start</span>
         <h2>Start free. Go Pro when the coach earns it.</h2>
-        <p>Full tracking is free forever — 5 AI coach messages a day included. Unlock unlimited coaching, AI meal + workout programs, and full analytics with Pro. Same product everywhere, priced for your region.</p>
+        <p>Everything you need to track is free forever. Pro unlocks unlimited coaching and AI programs whenever you're ready — pricing is shown inside the app, with a 7-day trial and no card required to start.</p>
       </div>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Free</h3>
-          <div class="price-primary">$0<span style="font-size: 16px; color: var(--text-muted);">/forever</span></div>
-          <div class="price-secondary">All core tracking, on us.</div>
-          <p class="price-sub">Real product, no time limit. Upgrade only if you want unlimited coaching.</p>
+      <div class="pricing-grid pricing-grid-solo">
+        <div class="pricing-card free-solo">
+          <span class="pricing-tag">Free, forever</span>
+          <h3>What you get without paying.</h3>
+          <p class="price-sub">A real product, not a trial. No time limit, no card on file.</p>
           <ul class="pricing-features">
             <li class="pricing-feature">Full food + exercise tracking</li>
             <li class="pricing-feature">Food search across 8 sources</li>
@@ -1188,37 +1213,12 @@
             <li class="pricing-feature">Active workout mode + PR tracking</li>
             <li class="pricing-feature">5 AI coach messages / day</li>
           </ul>
-        </div>
-        <div class="pricing-card">
-          <h3>Pro Monthly</h3>
-          <div class="price-primary">$7.99<span style="font-size: 16px; color: var(--text-muted);">/mo</span></div>
-          <div class="price-secondary">₹249 / month (India)</div>
-          <p class="price-sub">7-day free trial — no card required.</p>
-          <ul class="pricing-features">
-            <li class="pricing-feature">Everything in Free</li>
-            <li class="pricing-feature">Unlimited AI coaching</li>
-            <li class="pricing-feature">AI meal + workout programs</li>
-            <li class="pricing-feature">Full progress analytics</li>
-            <li class="pricing-feature">All wearable integrations</li>
-          </ul>
-        </div>
-        <div class="pricing-card featured">
-          <span class="pricing-tag">Best value</span>
-          <h3>Pro Annual</h3>
-          <div class="price-primary">$39.99<span style="font-size: 16px; color: var(--text-muted-on-dark);">/yr</span></div>
-          <div class="price-secondary">₹1,499 / year (India)</div>
-          <p class="price-sub">Saves ~58% vs monthly · 7-day free trial.</p>
-          <ul class="pricing-features">
-            <li class="pricing-feature">Everything in Monthly</li>
-            <li class="pricing-feature">Priority AI response</li>
-            <li class="pricing-feature">Early access to new modules</li>
-            <li class="pricing-feature">First in line for body-comp AI</li>
-          </ul>
+          <p class="pro-hint">Want unlimited coaching, AI meal + workout programs, and full progress analytics? An optional Pro upgrade lives inside the app — try it free for 7 days, no card required.</p>
         </div>
       </div>
-      <p class="pricing-trust">Free tier forever · 7-day trial on Pro · No ads · No data sales · One product, one price.</p>
+      <p class="pricing-trust">Free forever · Optional Pro upgrade in-app · No ads · No data sales · No upsells inside the app.</p>
       <div class="pricing-cta-row">
-        <a href="https://testflight.apple.com/join/AESKTajK" target="_blank" rel="noopener" class="btn btn-primary" data-testflight>Join the TestFlight to lock in founding-member pricing →</a>
+        <a href="https://testflight.apple.com/join/AESKTajK" target="_blank" rel="noopener" class="btn btn-primary" data-testflight>Try EnerZee free in TestFlight →</a>
       </div>
     </div>
   </section>
@@ -1249,7 +1249,7 @@
         </details>
         <details class="faq-item">
           <summary>How much does it cost?</summary>
-          <div class="faq-answer">Free tier is real and forever — full tracking, all 8 food sources, weight/sleep/water logging, active workouts, PR tracking, and 5 AI coach messages per day. Pro is $7.99 / month or $39.99 / year in Tier 1 markets and ₹249 / month or ₹1,499 / year in India, with a 7-day free trial and no card required to start. Regional pricing for SEA, LATAM, MEA, GCC.</div>
+          <div class="faq-answer">The Free tier is real and forever — full tracking, all 8 food sources, weight/sleep/water logging, active workouts, PR tracking, and 5 AI coach messages per day. An optional Pro upgrade (monthly or annual) unlocks unlimited coaching, AI meal + workout programs, and full progress analytics. Pricing is shown inside the app, with a 7-day free trial and no card required to start. Regionally priced for Tier 1, India, SEA, LATAM, MEA, and GCC.</div>
         </details>
         <details class="faq-item">
           <summary>When does it launch?</summary>
