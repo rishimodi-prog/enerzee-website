@@ -193,16 +193,34 @@
       position: relative;
       overflow: hidden;
     }
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
     .hero-mark {
-      width: 88px;
-      height: 88px;
-      margin-bottom: 28px;
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
       filter: drop-shadow(0 8px 24px rgba(126, 106, 246, 0.35));
+    }
+    .hero-wordmark {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(36px, 4.5vw, 52px);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--text-on-dark);
     }
     .hero-mark.static { display: none; }
     @media (prefers-reduced-motion: reduce) {
       .hero-mark.motion { display: none; }
       .hero-mark.static { display: block; }
+    }
+    @media (max-width: 480px) {
+      .hero-brand { gap: 12px; }
+      .hero-mark { width: 56px; height: 56px; }
     }
     .hero::before {
       content: '';
@@ -984,8 +1002,11 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <img class="hero-mark motion" src="/assets/infinity-splash-dark.gif" alt="EnerZee infinity mark" />
-          <img class="hero-mark static" src="/assets/infinity-static-dark.png" alt="EnerZee infinity mark" />
+          <div class="hero-brand">
+            <img class="hero-mark motion" src="/assets/infinity-splash-dark.gif" alt="" />
+            <img class="hero-mark static" src="/assets/infinity-static-dark.png" alt="" />
+            <span class="hero-wordmark">EnerZee</span>
+          </div>
           <span class="eyebrow">Premium AI Fitness Coach · TestFlight Now Open</span>
           <h1>The fitness app that <span class="accent">actually thinks.</span></h1>
           <p class="hero-subhead">Multi-stage AI coaching with shipped memory, science citations, and an accountability loop.</p>
