@@ -969,13 +969,66 @@
     }
     .footer-bottom .links { display: flex; gap: 18px; }
 
+    /* ─── Entrance reveals ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1), transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-stagger.in-view > * { opacity: 1; transform: translateY(0); }
+    .reveal-stagger.in-view > *:nth-child(1) { transition-delay: 60ms; }
+    .reveal-stagger.in-view > *:nth-child(2) { transition-delay: 140ms; }
+    .reveal-stagger.in-view > *:nth-child(3) { transition-delay: 220ms; }
+    .reveal-stagger.in-view > *:nth-child(4) { transition-delay: 300ms; }
+    .reveal-stagger.in-view > *:nth-child(5) { transition-delay: 380ms; }
+    .reveal-stagger.in-view > *:nth-child(6) { transition-delay: 460ms; }
+
+    /* ─── Live indicators ─── */
+    .live-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 0 0 rgba(57, 211, 153, 0.7);
+      margin-right: 8px;
+      vertical-align: middle;
+      animation: live-pulse 2.2s ease-out infinite;
+    }
+    @keyframes live-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(57, 211, 153, 0.55); }
+      70%  { box-shadow: 0 0 0 9px rgba(57, 211, 153, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(57, 211, 153, 0); }
+    }
+
+    .citation-chip.live::after {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--mint);
+      margin-left: 4px;
+      animation: live-pulse 2.2s ease-out infinite;
+    }
+
     /* ─── Reduced motion ─── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
       html { scroll-behavior: auto; }
+      .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+      .live-dot { animation: none; box-shadow: 0 0 0 4px rgba(57, 211, 153, 0.18); }
     }
   </style>
 </head>
@@ -1031,7 +1084,7 @@
               </div>
               <div class="demo-card-title">
                 Pulse · EnerZee Coach
-                <small>online · reasoning live</small>
+                <small><span class="live-dot"></span>online · reasoning live</small>
               </div>
             </div>
             <div class="demo-user-msg">Should I cut carbs tonight?</div>
@@ -1054,7 +1107,7 @@
   <!-- ─── 2. Live demo ─── -->
   <section class="section demo-section" id="demo">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Show, don't tell</span>
         <h2>Most fitness apps show you a number. We show you our work.</h2>
         <p>Tap any coach response and EnerZee opens it up. The deterministic rule it started from, the reasoning the LLM applied, the safety checks it ran, the research it pulled, the memories about you it used. Nothing is hidden. Nothing is hallucinated quietly. If it's wrong, you can see where it went wrong — and tell it so.</p>
@@ -1065,7 +1118,7 @@
           <p>Keep carbs in. Your last four evening sessions had progressive PRs on full-carb days — pulling them now would compound the poor-sleep week you're already in.</p>
           <span class="citation-chip">3 studies cited</span>
         </div>
-        <div class="why-panel">
+        <div class="why-panel reveal-stagger">
           <div class="why-panel-title">Why I'm saying this</div>
           <div class="why-row"><div class="why-row-label">Rule</div><div class="why-row-value">Evening training → moderate carbs help recovery</div></div>
           <div class="why-row"><div class="why-row-label">Reasoning</div><div class="why-row-value">Your last 4 sessions logged progressive PRs on full-carb days</div></div>
@@ -1081,12 +1134,12 @@
   <!-- ─── 3. How it thinks ─── -->
   <section class="section" id="how">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Architecture</span>
         <h2>Four layers. Every recommendation passes through all of them.</h2>
         <p>This is what most "AI fitness apps" don't have.</p>
       </div>
-      <div class="arch-grid">
+      <div class="arch-grid reveal-stagger">
         <div class="arch-card">
           <div class="arch-number">01</div>
           <h3>Rules first.</h3>
@@ -1115,11 +1168,11 @@
   <!-- ─── 4. Modules ─── -->
   <section class="section modules-section" id="modules">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Product surface</span>
         <h2>Built like a real fitness operating system.</h2>
       </div>
-      <div class="modules-grid">
+      <div class="modules-grid reveal-stagger">
         <div class="module-card">
           <div class="module-icon">A</div>
           <h3>AI Coach</h3>
@@ -1147,12 +1200,12 @@
   <!-- ─── 5. Science ─── -->
   <section class="section" id="science">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Auditable</span>
         <h2>The only AI coach with an academic scorecard.</h2>
         <p>Most fitness apps say they're "science-backed." We grade ourselves on it. The EnerZee Coach Reasoning Scorecard is a measurable rubric covering literature grounding, memory provenance, self-critique, safety protocols, and outcome learning. Right now we score 9.5 out of 10. Our research library spans <strong>17,212 papers across 1,461 journals</strong> — 6,022 are fully enriched and citable inside the coach today, with the rest progressively promoted as the ingestion pipeline runs. The remaining 0.5 on the scorecard is reserved for a live proof gate we're closing this quarter.</p>
       </div>
-      <div class="stat-row">
+      <div class="stat-row reveal-stagger">
         <div class="stat-card">
           <div class="stat-label">Coach Reasoning Scorecard</div>
           <div class="stat-value">9.5 <span style="font-size: 22px; color: var(--text-muted);">/ 10</span></div>
@@ -1193,7 +1246,7 @@
   <!-- ─── 7. Wearables ─── -->
   <section class="section" id="wearables">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Wearable-aware</span>
         <h2>Plays nicely with every device you already own.</h2>
         <p>Apple Health, Health Connect, Fitbit, Garmin, Whoop, Strava, Oura. Heart-rate variability, sleep stages, training load, recovery — all feeding into the coach context.</p>
@@ -1217,7 +1270,7 @@
   <!-- ─── 8. Pricing ─── -->
   <section class="section pricing-section" id="pricing">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Free to start</span>
         <h2>Start free. Go Pro when the coach earns it.</h2>
         <p>Everything you need to track is free forever. Pro unlocks unlimited coaching and AI programs whenever you're ready — pricing is shown inside the app, with a 7-day trial and no card required to start.</p>
@@ -1247,7 +1300,7 @@
   <!-- ─── 9. FAQ ─── -->
   <section class="section" id="faq">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">FAQ</span>
         <h2>Honest answers to the questions we get most.</h2>
       </div>
@@ -1368,6 +1421,79 @@
   </footer>
 
   <script>
+    // ─── Entrance reveals + counter animations ───
+    (function () {
+      var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+      var statCards = document.querySelectorAll('.stat-card');
+
+      if (prefersReduced || !('IntersectionObserver' in window)) {
+        revealEls.forEach(function (el) { el.classList.add('in-view'); });
+        statCards.forEach(function (card) { runCounterFromCard(card, true); });
+        return;
+      }
+
+      var revealIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            revealIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(function (el) { revealIO.observe(el); });
+
+      var statIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            runCounterFromCard(entry.target, false);
+            statIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      statCards.forEach(function (card) { statIO.observe(card); });
+
+      function runCounterFromCard(card, snap) {
+        var valueEl = card.querySelector('.stat-value');
+        if (!valueEl || valueEl.dataset.animated === 'done') return;
+        var raw = valueEl.textContent.trim();
+        // Capture the leading numeric portion (handles "9.5", "17,212", "100")
+        var match = raw.match(/^([\d,\.]+)/);
+        if (!match) return;
+        var numStr = match[1];
+        var trailingHTML = valueEl.innerHTML.slice(valueEl.innerHTML.indexOf(numStr) + numStr.length);
+        var target = parseFloat(numStr.replace(/,/g, ''));
+        if (isNaN(target)) return;
+        valueEl.dataset.animated = 'done';
+
+        if (snap) {
+          valueEl.innerHTML = numStr + trailingHTML;
+          return;
+        }
+
+        var isDecimal = numStr.indexOf('.') !== -1;
+        var hasCommas = numStr.indexOf(',') !== -1;
+        var duration = 1400;
+        var start = performance.now();
+
+        function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+        function format(n) {
+          if (isDecimal) return n.toFixed(1);
+          var rounded = Math.round(n);
+          return hasCommas ? rounded.toLocaleString('en-US') : String(rounded);
+        }
+        function tick(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = easeOutCubic(progress);
+          var current = target * eased;
+          valueEl.innerHTML = format(current) + trailingHTML;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+    })();
+
     function handleWaitlist(e) {
       e.preventDefault();
       const form = e.target;
