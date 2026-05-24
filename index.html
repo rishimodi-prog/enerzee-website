@@ -1203,7 +1203,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">Auditable</span>
         <h2>The only AI coach with an academic scorecard.</h2>
-        <p>Most fitness apps say they're "science-backed." We grade ourselves on it. The EnerZee Coach Reasoning Scorecard is a measurable rubric covering literature grounding, memory provenance, self-critique, safety protocols, and outcome learning. Right now we score 9.5 out of 10, with <strong>39,189 papers cited inline from 3,446 journals</strong> — if we make a claim, we can back it. The remaining 0.5 on the scorecard is reserved for a live proof gate we're closing this quarter.</p>
+        <p>Most fitness apps say they're "science-backed." We grade ourselves on it. The EnerZee Coach Reasoning Scorecard is a measurable rubric covering literature grounding, memory provenance, self-critique, safety protocols, and outcome learning. Right now we score 9.5 out of 10, with <strong><span data-live="papers_cited">39,196</span> papers cited inline from <span data-live="journals">3,448</span> journals</strong> — if we make a claim, we can back it. The remaining 0.5 on the scorecard is reserved for a live proof gate we're closing this quarter.</p>
       </div>
       <div class="stat-row reveal-stagger">
         <div class="stat-card">
@@ -1213,8 +1213,8 @@
         </div>
         <div class="stat-card">
           <div class="stat-label">Papers cited inline</div>
-          <div class="stat-value">39,189</div>
-          <div class="stat-sub">Across 3,446 journals — click any citation to read</div>
+          <div class="stat-value" data-live="papers_cited">39,196</div>
+          <div class="stat-sub">Across <span data-live="journals">3,448</span> journals — click any citation to read</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">Cross-model food checks</div>
@@ -1421,11 +1421,41 @@
   </footer>
 
   <script>
-    // ─── Entrance reveals + counter animations ───
+    // ─── Entrance reveals + counter animations + live stats ───
     (function () {
       var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
       var statCards = document.querySelectorAll('.stat-card');
+
+      // Pull the real research-library counts from Supabase (aggregate-only RPC,
+      // no row data exposed). Hardcoded numbers in the markup are the fallback.
+      var SUPABASE_URL = 'https://klynvkibkudgprctqzyr.supabase.co';
+      var SUPABASE_KEY = 'sb_publishable_spbQVNaGT2VgiZRWzdBRQg_TDgxiKbn';
+      fetch(SUPABASE_URL + '/rest/v1/rpc/get_research_stats', {
+        method: 'POST',
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json' },
+        body: '{}'
+      })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (stats) { if (stats && typeof stats.papers_cited === 'number') applyLiveStats(stats); })
+        .catch(function () { /* keep the hardcoded fallback numbers */ });
+
+      function fmtNum(n) { return Math.round(n).toLocaleString('en-US'); }
+
+      function applyLiveStats(stats) {
+        document.querySelectorAll('[data-live]').forEach(function (el) {
+          var key = el.getAttribute('data-live');
+          if (!(key in stats)) return;
+          var formatted = fmtNum(stats[key]);
+          if (el.classList.contains('stat-value')) {
+            // Hand the live target to the counter; if it already ran, snap to it.
+            el.dataset.liveValue = formatted;
+            if (el.dataset.animated === 'done') el.textContent = formatted;
+          } else {
+            el.textContent = formatted;
+          }
+        });
+      }
 
       if (prefersReduced || !('IntersectionObserver' in window)) {
         revealEls.forEach(function (el) { el.classList.add('in-view'); });
@@ -1456,23 +1486,28 @@
       function runCounterFromCard(card, snap) {
         var valueEl = card.querySelector('.stat-value');
         if (!valueEl || valueEl.dataset.animated === 'done') return;
-        var raw = valueEl.textContent.trim();
-        // Capture the leading numeric portion (handles "9.5", "17,212", "100")
-        var match = raw.match(/^([\d,\.]+)/);
-        if (!match) return;
-        var numStr = match[1];
-        var trailingHTML = valueEl.innerHTML.slice(valueEl.innerHTML.indexOf(numStr) + numStr.length);
-        var target = parseFloat(numStr.replace(/,/g, ''));
+        var originalText = valueEl.textContent.trim();
+        // Capture the leading numeric portion of the static markup (handles "9.5", "39,196", "100")
+        var origMatch = originalText.match(/^([\d,\.]+)/);
+        if (!origMatch) return;
+        var origNumStr = origMatch[1];
+        // Suffix (e.g. " / 10", "%") is whatever follows the original number in the markup.
+        var idx = valueEl.innerHTML.indexOf(origNumStr);
+        var trailingHTML = idx >= 0 ? valueEl.innerHTML.slice(idx + origNumStr.length) : '';
+        // Count to the live value if it has arrived, otherwise the static fallback.
+        var targetStr = valueEl.dataset.liveValue || origNumStr;
+        var target = parseFloat(targetStr.replace(/,/g, ''));
         if (isNaN(target)) return;
         valueEl.dataset.animated = 'done';
 
+        var isDecimal = targetStr.indexOf('.') !== -1;
+        var hasCommas = targetStr.indexOf(',') !== -1 || target >= 1000;
+
         if (snap) {
-          valueEl.innerHTML = numStr + trailingHTML;
+          valueEl.innerHTML = (isDecimal ? target.toFixed(1) : (hasCommas ? Math.round(target).toLocaleString('en-US') : String(Math.round(target)))) + trailingHTML;
           return;
         }
 
-        var isDecimal = numStr.indexOf('.') !== -1;
-        var hasCommas = numStr.indexOf(',') !== -1;
         var duration = 1400;
         var start = performance.now();
 
