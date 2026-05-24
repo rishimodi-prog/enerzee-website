@@ -561,6 +561,14 @@
     }
     .module-card h3 { font-size: 22px; margin-bottom: 10px; }
     .module-card p { color: var(--text-muted); font-size: 15.5px; }
+    .module-card.module-lead {
+      grid-column: 1 / -1;
+      background: var(--ink);
+      color: var(--text-on-dark);
+    }
+    .module-card.module-lead h3 { color: var(--text-on-dark); font-size: 24px; }
+    .module-card.module-lead p { color: var(--text-muted-on-dark); font-size: 16px; max-width: 720px; }
+    .module-card.module-lead .module-icon { background: var(--mint); color: var(--ink); }
 
     /* ─── Section 5: Science ─── */
     .stat-row {
@@ -1173,15 +1181,20 @@
         <h2>Built like a real fitness operating system.</h2>
       </div>
       <div class="modules-grid reveal-stagger">
+        <div class="module-card module-lead">
+          <div class="module-icon">T</div>
+          <h3>Today — your daily command center</h3>
+          <p>Open the app to one screen that already knows your day: a momentum strip, streak-freeze insurance, a proactive coach insight, and an end-of-day reflection that sets tomorrow's if-then intention. The coach comes to you — no digging required.</p>
+        </div>
         <div class="module-card">
           <div class="module-icon">A</div>
           <h3>AI Coach</h3>
-          <p>The hero. Natural-language chat with full context — profile, today's logs, training history, what worked, what didn't. Asks clarifying questions instead of guessing.</p>
+          <p>Natural-language chat with full context — profile, today's logs, training history, what worked, what didn't. Asks clarifying questions instead of guessing, and routes to specialist lanes — hypertrophy, supplements, injury-aware, wellness — when your question needs depth.</p>
         </div>
         <div class="module-card">
           <div class="module-icon">F</div>
           <h3>Food, with trust labels</h3>
-          <p>Log in plain language — "two rotis with rajma and a small bowl of curd." Every item gets a confidence label: USDA-verified, database, external, estimated, or quarantined. A second AI cross-checks the first.</p>
+          <p>Log in plain language — type it or say it out loud ("two rotis with rajma and a small bowl of curd"). Every item gets a confidence label: verified, database, external, or AI-estimated, with low-trust items quarantined until confirmed. A second AI cross-checks the first.</p>
         </div>
         <div class="module-card">
           <div class="module-icon">W</div>
@@ -1222,6 +1235,7 @@
           <div class="stat-sub">Every estimate verified</div>
         </div>
       </div>
+      <p class="reveal" style="text-align: center; max-width: 680px; margin: 48px auto 0; color: var(--text-muted); font-size: 16.5px; line-height: 1.6;">Fresh research lands in your feed every day — 45,000+ papers indexed and growing. Tap <strong>"Ask Coach about this paper"</strong> on any of them to see exactly what it changes for your training.</p>
       <p class="pull-quote">"If we cite a study, you can click it. If we make a claim, we can defend it."</p>
     </div>
   </section>
