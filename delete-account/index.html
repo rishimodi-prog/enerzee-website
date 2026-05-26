@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Account - EnerZee</title>
+  <meta name="description" content="Request deletion of your EnerZee account and associated personal data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0A0A0F; --bg-card: #13131A; --border: #2A2A3A; --text: #F0F0F5;
+      --text-muted: #8888A0; --accent: #8B5CF6; --accent-light: #A78BFA;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,15,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .logo { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .nav-back { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .nav-back:hover { color: var(--text); }
+    .legal { padding: 120px 0 80px; }
+    .legal h1 { font-size: 36px; font-weight: 900; letter-spacing: -1px; margin-bottom: 8px; }
+    .legal .date { color: var(--text-muted); font-size: 14px; margin-bottom: 48px; }
+    .legal h2 { font-size: 20px; font-weight: 700; margin-top: 40px; margin-bottom: 12px; color: var(--accent-light); }
+    .legal p { color: var(--text-muted); margin-bottom: 16px; font-size: 15px; }
+    .legal ul, .legal ol { padding-left: 24px; margin-bottom: 16px; }
+    .legal li { color: var(--text-muted); font-size: 15px; margin-bottom: 8px; }
+    .legal strong { color: var(--text); }
+    .legal a { color: var(--accent-light); text-decoration: none; }
+    .legal a:hover { text-decoration: underline; }
+    .request-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 28px 0; }
+    .primary-link { display: inline-block; background: var(--accent); color: #fff !important; padding: 12px 18px; border-radius: 10px; font-weight: 700; margin-top: 8px; }
+    footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-muted); }
+    footer a { color: var(--text-muted); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Ener<span>Zee</span></a>
+      <a href="index.html" class="nav-back">&larr; Back to Home</a>
+    </div>
+  </nav>
+
+  <div class="container legal">
+    <h1>Delete Account</h1>
+    <p class="date">Account and data deletion requests</p>
+
+    <p>You can request deletion of your EnerZee account and associated personal data from inside the app or from this page.</p>
+
+    <h2>Delete From The App</h2>
+    <ol>
+      <li>Open EnerZee and sign in to your account.</li>
+      <li>Go to Profile, then Account.</li>
+      <li>Choose Delete Account and confirm the deletion prompts.</li>
+    </ol>
+
+    <div class="request-box">
+      <h2>Request Deletion By Email</h2>
+      <p>If you cannot access the app, email us from the address linked to your EnerZee account. Include "Delete my EnerZee account" in the subject line.</p>
+      <a class="primary-link" href="mailto:privacy@enerzee.app?subject=Delete%20my%20EnerZee%20account">Email privacy@enerzee.app</a>
+    </div>
+
+    <h2>What We Delete</h2>
+    <p>When your request is verified, we delete your account and associated personal data, including profile data, food logs, workout logs, progress history, connected-device records, AI Coach memory, and chat history.</p>
+
+    <h2>What May Be Retained</h2>
+    <p>We may retain limited records where required for legal, tax, security, fraud prevention, dispute resolution, or regulatory compliance. We may also retain anonymized or aggregated data that cannot identify you.</p>
+
+    <h2>Timing</h2>
+    <p>We aim to complete verified deletion requests within 30 days. If we need more information to verify ownership of the account, we will contact you at the email address used for the request.</p>
+
+    <h2>Subscriptions</h2>
+    <p>Deleting your EnerZee account does not automatically cancel an active Apple App Store or Google Play subscription. Please cancel your subscription in your Apple or Google account settings to stop future billing.</p>
+
+    <h2>Questions</h2>
+    <p>For privacy questions or data requests, contact <a href="mailto:privacy@enerzee.app">privacy@enerzee.app</a>.</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 EnerZee. All rights reserved.</p>
+    <div style="margin-top:12px;">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="support.html">Support</a>
+    </div>
+  </footer>
+</body>
+</html>
