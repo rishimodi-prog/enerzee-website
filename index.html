@@ -606,6 +606,129 @@
       color: var(--text-muted);
     }
 
+    /* ─── Trust & Evidence ─── */
+    .trust-section {
+      background: linear-gradient(180deg, var(--deep-sage) 0%, var(--ink) 100%);
+      color: var(--text-on-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .trust-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(57, 211, 153, 0.10), transparent 55%);
+      pointer-events: none;
+    }
+    .trust-section .container { position: relative; z-index: 1; }
+
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      max-width: 760px;
+      margin: 8px auto 0;
+    }
+    @media (max-width: 600px) { .benchmark-grid { grid-template-columns: 1fr; } }
+    .benchmark-card {
+      background: rgba(255, 253, 248, 0.04);
+      border: 1px solid var(--border-on-dark);
+      border-radius: 20px;
+      padding: 34px 28px;
+      text-align: center;
+    }
+    .benchmark-card.win {
+      border-color: rgba(57, 211, 153, 0.45);
+      background: rgba(57, 211, 153, 0.08);
+      box-shadow: 0 0 0 1px rgba(57, 211, 153, 0.15), 0 20px 50px rgba(0,0,0,0.25);
+    }
+    .benchmark-card .stat-value {
+      font-family: var(--font-mono);
+      font-size: clamp(44px, 6vw, 56px);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--text-on-dark);
+      margin-bottom: 0;
+    }
+    .benchmark-card.win .stat-value { color: var(--mint); }
+    .benchmark-card .bench-label {
+      font-size: 14px;
+      color: var(--text-muted-on-dark);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+    .benchmark-card.win .bench-label { color: var(--text-on-dark); font-weight: 500; }
+    .bench-caption {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--text-muted-on-dark);
+      max-width: 660px;
+      margin: 26px auto 0;
+      line-height: 1.6;
+    }
+    .trust-callout {
+      max-width: 720px;
+      margin: 40px auto 0;
+      background: rgba(57, 211, 153, 0.10);
+      border: 1px solid rgba(57, 211, 153, 0.28);
+      border-left: 3px solid var(--mint);
+      border-radius: 16px;
+      padding: 22px 26px;
+      font-size: 16.5px;
+      line-height: 1.65;
+      color: var(--text-on-dark);
+    }
+    .bench-smallprint {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted-on-dark);
+      max-width: 660px;
+      margin: 20px auto 0;
+      line-height: 1.55;
+    }
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      max-width: 900px;
+      margin: 56px auto 0;
+    }
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(247, 243, 235, 0.05);
+      border: 1px solid var(--border-on-dark);
+      border-radius: 100px;
+      padding: 10px 16px;
+      font-size: 13.5px;
+      color: var(--text-on-dark);
+    }
+    .trust-badge .ico { font-size: 15px; line-height: 1; }
+    .trust-how {
+      max-width: 720px;
+      margin: 64px auto 0;
+      text-align: center;
+    }
+    .trust-how h3 {
+      font-size: clamp(24px, 3vw, 32px);
+      margin-bottom: 16px;
+      color: var(--text-on-dark);
+    }
+    .trust-how p { color: var(--text-muted-on-dark); font-size: 16.5px; line-height: 1.7; }
+    .trust-disclaimer {
+      max-width: 720px;
+      margin: 44px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid var(--border-on-dark);
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--text-muted-on-dark);
+      line-height: 1.6;
+    }
+
     /* ─── Section 6: Memory ─── */
     .memory-section { background: var(--cream); }
     .memory-list {
@@ -1050,6 +1173,7 @@
         <a href="#how">How it thinks</a>
         <a href="#modules">Modules</a>
         <a href="#science">Science</a>
+        <a href="#trust">Trust</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
         <a href="https://testflight.apple.com/join/AESKTajK" target="_blank" rel="noopener" class="nav-cta" data-testflight>Join TestFlight →</a>
@@ -1237,6 +1361,52 @@
       </div>
       <p class="reveal" style="text-align: center; max-width: 680px; margin: 48px auto 0; color: var(--text-muted); font-size: 16.5px; line-height: 1.6;">Fresh research lands in your feed every day — 45,000+ papers indexed and growing. Tap <strong>"Ask Coach about this paper"</strong> on any of them to see exactly what it changes for your training.</p>
       <p class="pull-quote">"If we cite a study, you can click it. If we make a claim, we can defend it."</p>
+    </div>
+  </section>
+
+  <!-- ─── Trust & Evidence ─── -->
+  <section class="section trust-section on-dark" id="trust">
+    <div class="container">
+      <!-- Block 1: Headline evidence -->
+      <div class="section-head reveal">
+        <span class="eyebrow">Trust &amp; Evidence</span>
+        <h2>Built to a measurable standard — and tested against it.</h2>
+        <p>EnerZee's coach is benchmarked on real health-safety and nutrition questions, graded against expert rubrics.</p>
+      </div>
+      <div class="benchmark-grid reveal-stagger">
+        <div class="stat-card benchmark-card win">
+          <div class="stat-value">97.6%</div>
+          <div class="bench-label">EnerZee coach</div>
+        </div>
+        <div class="stat-card benchmark-card">
+          <div class="stat-value">92.7%</div>
+          <div class="bench-label">Standalone general-purpose AI (no EnerZee guardrails)</div>
+        </div>
+      </div>
+      <p class="bench-caption">Same questions, head to head — EnerZee internal benchmark (HealthBench-style safety + Registered-Dietitian-style nutrition, 41 cases).</p>
+      <div class="trust-callout reveal">In our safety tests, a general-purpose model handed over dosing for a potentially lethal weight-loss chemical when asked "for research." EnerZee refused and flagged the danger.</div>
+      <p class="bench-smallprint">EnerZee internal benchmark; benchmark-tested, expert-rubric graded. Not a medical device or diagnostic tool.</p>
+
+      <!-- Block 2: Trust badge row -->
+      <div class="trust-badges reveal">
+        <span class="trust-badge"><span class="ico">🔒</span> Data encrypted (in transit &amp; at rest)</span>
+        <span class="trust-badge"><span class="ico">🙅</span> We never sell your data</span>
+        <span class="trust-badge"><span class="ico">🇮🇳</span> DPDP-compliant</span>
+        <span class="trust-badge"><span class="ico">🇪🇺</span> GDPR-compliant</span>
+        <span class="trust-badge"><span class="ico">♿</span> WCAG 2.1 AA accessibility</span>
+        <span class="trust-badge"><span class="ico">🧪</span> Benchmark-tested (safety + nutrition)</span>
+        <span class="trust-badge"><span class="ico">👩‍⚕️</span> Expert-reviewed content</span>
+        <span class="trust-badge"><span class="ico">📱</span> Privacy practices disclosed on App Store &amp; Google Play</span>
+      </div>
+
+      <!-- Block 3: How we test -->
+      <div class="trust-how reveal">
+        <h3>How we keep the coach safe and accurate</h3>
+        <p>We run EnerZee's coach against a benchmark of health-safety and nutrition scenarios — emergencies, medication questions, unsafe goals, and evidence-based nutrition — each graded against expert-standard rubrics. We test the real product (not a demo), compare it to a standalone AI to prove our safety layer adds value, and re-run it on every release so quality can't quietly slip. We publish the score and the date, and never claim a certification we haven't earned.</p>
+      </div>
+
+      <!-- Block 4: Disclaimer -->
+      <p class="trust-disclaimer reveal">EnerZee is an evidence-based wellness coach, not a licensed medical provider. It does not diagnose, treat, or replace your doctor, dietitian, or emergency services. For medical, medication, pregnancy, or urgent concerns, consult a qualified professional.</p>
     </div>
   </section>
 
