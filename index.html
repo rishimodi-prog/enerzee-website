@@ -707,6 +707,57 @@
       color: var(--text-on-dark);
     }
     .trust-badge .ico { font-size: 15px; line-height: 1; }
+    .trust-badge.earned { border-color: rgba(57, 211, 153, 0.30); }
+    .trust-badge.pending { opacity: 0.5; border-style: dashed; }
+    .trust-badge .soon {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted-on-dark);
+      border: 1px solid var(--border-on-dark);
+      border-radius: 100px;
+      padding: 1px 6px;
+      margin-left: 4px;
+    }
+    .trust-badge a { color: var(--mint); border-bottom: 1px solid rgba(57,211,153,0.4); }
+    .trust-badges-row2 { margin-top: 14px; }
+    .trust-badges-label {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted-on-dark);
+      margin: 56px 0 16px;
+    }
+    .trust-badges-row2 + .trust-badges-label, .trust-badges + .trust-badges-label { margin-top: 40px; }
+
+    /* Hero benchmark strip */
+    .hero-benchmark {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 24px;
+      margin-top: 44px;
+      padding: 18px 22px;
+      background: rgba(255, 253, 248, 0.04);
+      border: 1px solid var(--border-on-dark);
+      border-radius: 16px;
+      transition: border-color 160ms ease, background 160ms ease;
+    }
+    .hero-benchmark:hover { border-color: rgba(57, 211, 153, 0.40); background: rgba(57, 211, 153, 0.06); }
+    .hb-label { font-size: 13.5px; font-weight: 500; color: var(--text-on-dark); max-width: 200px; }
+    .hb-chips { display: flex; align-items: baseline; gap: 18px; }
+    .hb-chip { display: inline-flex; align-items: baseline; gap: 6px; font-size: 12.5px; color: var(--text-muted-on-dark); }
+    .hb-chip strong { font-family: var(--font-mono); font-weight: 600; font-size: 20px; color: var(--text-muted-on-dark); line-height: 1; }
+    .hb-chip.win { color: var(--text-on-dark); }
+    .hb-chip.win strong { font-size: 30px; color: var(--mint); }
+    .hb-caption { flex-basis: 100%; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted-on-dark); line-height: 1.5; }
+    @media (max-width: 700px) {
+      .hero-benchmark { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .hb-label { max-width: none; }
+    }
     .trust-how {
       max-width: 720px;
       margin: 64px auto 0;
@@ -1206,6 +1257,14 @@
             <span>7 wearable integrations</span>
             <span>Privacy-first memory</span>
           </div>
+          <a href="#trust" class="hero-benchmark" aria-label="See our Trust &amp; Evidence benchmark">
+            <span class="hb-label">Benchmark-tested for safety &amp; nutrition accuracy</span>
+            <span class="hb-chips">
+              <span class="hb-chip win"><strong>97.6%</strong> EnerZee coach</span>
+              <span class="hb-chip"><strong>95.1%</strong> standalone AI (no guardrails)</span>
+            </span>
+            <span class="hb-caption">Head-to-head on 41 expert-graded health &amp; nutrition cases — EnerZee internal benchmark, May 2026. →</span>
+          </a>
         </div>
         <div>
           <div class="demo-card">
@@ -1379,15 +1438,16 @@
           <div class="bench-label">EnerZee coach</div>
         </div>
         <div class="stat-card benchmark-card">
-          <div class="stat-value">92.7%</div>
+          <div class="stat-value">95.1%</div>
           <div class="bench-label">Standalone general-purpose AI (no EnerZee guardrails)</div>
         </div>
       </div>
-      <p class="bench-caption">Same questions, head to head — EnerZee internal benchmark (HealthBench-style safety + Registered-Dietitian-style nutrition, 41 cases).</p>
+      <p class="bench-caption">EnerZee internal benchmark — HealthBench-style safety + Registered-Dietitian-style nutrition, 41 cases, May 2026.</p>
       <div class="trust-callout reveal">In our safety tests, a general-purpose model handed over dosing for a potentially lethal weight-loss chemical when asked "for research." EnerZee refused and flagged the danger.</div>
       <p class="bench-smallprint">EnerZee internal benchmark; benchmark-tested, expert-rubric graded. Not a medical device or diagnostic tool.</p>
 
-      <!-- Block 2: Trust badge row -->
+      <!-- Block 2: Trust badge wall -->
+      <p class="trust-badges-label reveal">What we control</p>
       <div class="trust-badges reveal">
         <span class="trust-badge"><span class="ico">🔒</span> Data encrypted (in transit &amp; at rest)</span>
         <span class="trust-badge"><span class="ico">🙅</span> We never sell your data</span>
@@ -1395,14 +1455,22 @@
         <span class="trust-badge"><span class="ico">🇪🇺</span> GDPR-compliant</span>
         <span class="trust-badge"><span class="ico">♿</span> WCAG 2.1 AA accessibility</span>
         <span class="trust-badge"><span class="ico">🧪</span> Benchmark-tested (safety + nutrition)</span>
-        <span class="trust-badge"><span class="ico">👩‍⚕️</span> Expert-reviewed content</span>
-        <span class="trust-badge"><span class="ico">📱</span> Privacy practices disclosed on App Store &amp; Google Play</span>
+        <span class="trust-badge pending"><span class="ico">👩‍⚕️</span> Expert-reviewed content <span class="soon">soon</span></span>
+        <span class="trust-badge"><span class="ico">📱</span> Privacy disclosed on App Store &amp; Google Play</span>
+      </div>
+      <p class="trust-badges-label reveal">Earned proof</p>
+      <div class="trust-badges trust-badges-row2 reveal">
+        <span class="trust-badge pending"><span class="ico">⭐</span> App Store rating <span class="soon">soon</span></span>
+        <span class="trust-badge pending"><span class="ico">🏆</span> Product Hunt #1 <span class="soon">soon</span></span>
+        <span class="trust-badge pending"><span class="ico">💬</span> Trustpilot <span class="soon">soon</span></span>
+        <span class="trust-badge earned"><span class="ico">❤️</span> Works with Apple Health</span>
+        <span class="trust-badge earned"><span class="ico">🔬</span> We publish our safety scores — <a href="/responsible-ai">read how</a></span>
       </div>
 
       <!-- Block 3: How we test -->
       <div class="trust-how reveal">
         <h3>How we keep the coach safe and accurate</h3>
-        <p>We run EnerZee's coach against a benchmark of health-safety and nutrition scenarios — emergencies, medication questions, unsafe goals, and evidence-based nutrition — each graded against expert-standard rubrics. We test the real product (not a demo), compare it to a standalone AI to prove our safety layer adds value, and re-run it on every release so quality can't quietly slip. We publish the score and the date, and never claim a certification we haven't earned.</p>
+        <p>We run EnerZee's coach against a benchmark of health-safety and nutrition scenarios — emergencies, medication questions, unsafe goals, and evidence-based nutrition — each graded against expert-standard rubrics. We test the real product (not a demo), compare it to a standalone AI to prove our safety layer adds value, and re-run it on every release. We publish the score and the date, and never claim a certification we haven't earned.</p>
       </div>
 
       <!-- Block 4: Disclaimer -->
@@ -1586,6 +1654,7 @@
           <h4>Legal</h4>
           <a href="privacy.html">Privacy</a>
           <a href="terms.html">Terms</a>
+          <a href="/responsible-ai">Responsible AI</a>
         </div>
         <div class="footer-col">
           <h4>Support</h4>
