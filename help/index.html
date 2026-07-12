@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnerZee Help Center</title>
+  <meta name="description" content="Task-based EnerZee help for Today, Food, Workout, Progress, AI Coach, devices, account access, privacy, and bug reports." />
+  <link rel="canonical" href="https://enerzee.app/help/" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #12231D;
+      --deep-sage: #123C2E;
+      --primary-sage: #2F765D;
+      --mint: #39D399;
+      --gold: #B9852E;
+      --blue: #5F7DAE;
+      --paper: #F7F3EB;
+      --cream: #FFFDF8;
+      --line: rgba(18, 35, 29, 0.12);
+      --muted: #5C6B65;
+      --shadow: 0 18px 50px rgba(18, 35, 29, 0.10);
+      --font-display: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'DM Mono', 'SF Mono', Menlo, monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(247, 243, 235, 0.90);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; }
+    .brand img { height: 38px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-pill {
+      color: var(--cream);
+      background: var(--ink);
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .hero {
+      padding: 82px 0 46px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 85% 20%, rgba(57, 211, 153, 0.16), transparent 30%),
+        linear-gradient(180deg, var(--cream), var(--paper));
+    }
+    .eyebrow {
+      display: inline-flex;
+      font-family: var(--font-mono);
+      color: var(--primary-sage);
+      border: 1px solid rgba(47, 118, 93, 0.22);
+      background: rgba(47, 118, 93, 0.06);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.14; letter-spacing: -0.01em; }
+    h1 { font-size: clamp(42px, 7vw, 82px); max-width: 900px; }
+    .hero p { max-width: 760px; color: var(--muted); font-size: 19px; margin-top: 20px; }
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .quick-card {
+      display: block;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      min-height: 116px;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.75) inset;
+    }
+    .quick-card strong { display: block; font-family: var(--font-display); font-size: 17px; margin-bottom: 6px; }
+    .quick-card span { display: block; color: var(--muted); font-size: 14px; line-height: 1.45; }
+    .quick-card:hover { border-color: rgba(47, 118, 93, 0.38); transform: translateY(-1px); }
+    section { padding: 54px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 22px; }
+    .section-head h2 { font-size: clamp(28px, 4vw, 44px); }
+    .section-head p { max-width: 520px; color: var(--muted); }
+    .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 26px; }
+    .tab {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--cream);
+      color: var(--muted);
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .tab.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .panel {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+    .first-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .action {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      background: #FBF8F1;
+    }
+    .action b { display: block; font-family: var(--font-display); margin-bottom: 5px; }
+    .action span { color: var(--muted); font-size: 14px; }
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .task {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(18,35,29,0.06);
+    }
+    .task h3 { font-size: 22px; margin-bottom: 8px; }
+    .task p { color: var(--muted); margin-bottom: 14px; }
+    .task ol { padding-left: 22px; color: var(--ink); }
+    .task li { margin: 8px 0; }
+    .task .meta {
+      margin-top: 16px;
+      color: var(--primary-sage);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .boundary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .boundary-card {
+      border-radius: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: var(--cream);
+    }
+    .boundary-card.dark { background: var(--ink); color: var(--cream); border-color: transparent; }
+    .boundary-card.dark p, .boundary-card.dark li { color: rgba(255,253,248,0.72); }
+    .boundary-card ul { padding-left: 20px; margin-top: 12px; }
+    .report-band {
+      background: var(--deep-sage);
+      color: var(--cream);
+      border-radius: 24px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .report-band p { color: rgba(255,253,248,0.76); margin-top: 10px; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      border: 1px solid rgba(255,253,248,0.24);
+    }
+    .button.primary { background: var(--mint); color: var(--ink); border-color: var(--mint); }
+    .button.secondary { color: var(--cream); }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-row a { margin-left: 18px; }
+    @media (max-width: 860px) {
+      .quick-grid, .task-grid, .boundary, .report-band, .first-actions { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 10px; }
+      .nav-links { display: none; }
+      .hero { padding-top: 54px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="/" aria-label="EnerZee home">
+        <img src="/assets/lockup-horizontal.png" alt="EnerZee" />
+      </a>
+      <div class="nav-links">
+        <a href="#start">Start</a>
+        <a href="#tasks">Tasks</a>
+        <a href="#coach">AI Coach</a>
+        <a href="#report">Report</a>
+        <a class="nav-pill" href="/support.html">Contact support</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="container">
+        <span class="eyebrow">EnerZee help center</span>
+        <h1>Get unstuck by task, not by guessing where a feature lives.</h1>
+        <p>Use these guides when you want to log a workout, review calories, fix a device connection, understand Progress, ask AI Coach about the app, or report a problem with useful context.</p>
+        <div class="quick-grid" aria-label="Common help shortcuts">
+          <a class="quick-card" href="#active-workout"><strong>Active workout</strong><span>Keep sets, rest timer, edits, and resume behavior clear.</span></a>
+          <a class="quick-card" href="#progress"><strong>Progress</strong><span>Read trends, tappable cards, and missing updates.</span></a>
+          <a class="quick-card" href="#devices"><strong>Devices</strong><span>Check Apple Health, Health Connect, Fitbit, WHOOP, Strava, and Oura state.</span></a>
+          <a class="quick-card" href="#report"><strong>Report a bug</strong><span>Send screen, build, screenshot, and recovery path.</span></a>
+        </div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">First 10 seconds</span>
+            <h2>Choose the guide that matches how you use EnerZee.</h2>
+          </div>
+          <p>The app changes what it shows based on intent. The help center follows the same rule so training-first users are not pushed into unrelated tracking.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Help persona">
+          <button class="tab active" type="button" data-persona="fitness">General fitness</button>
+          <button class="tab" type="button" data-persona="training">Training-first</button>
+          <button class="tab" type="button" data-persona="diet">Diet-only</button>
+          <button class="tab" type="button" data-persona="bodybuilding">Bodybuilding</button>
+          <button class="tab" type="button" data-persona="advanced">Advanced physique</button>
+        </div>
+        <div class="panel" id="personaPanel" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="tasks">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Task guides</span>
+            <h2>Do the thing you came for.</h2>
+          </div>
+          <p>Each card gives the exact app path, what to verify, and when to report a problem instead of retrying blindly.</p>
+        </div>
+        <div class="task-grid">
+          <article class="task" id="today">
+            <h3>Use Today</h3>
+            <p>Today is the first tab and shows the most useful actions for the day.</p>
+            <ol>
+              <li>Open Today from the first tab.</li>
+              <li>Start with the top focus card, then use the visible task cards for the day.</li>
+              <li>Use the Help icon at the top if a card looks wrong or a task is missing.</li>
+            </ol>
+            <div class="meta">Report if Today shows stale cards or actions that do not open.</div>
+          </article>
+
+          <article class="task" id="active-workout">
+            <h3>Use an active workout</h3>
+            <p>Active Workout keeps the session running while you log sets, rest, or minimize.</p>
+            <ol>
+              <li>Open Workout and start a program or custom workout.</li>
+              <li>Type today's kg and reps into the current set rows.</li>
+              <li>Use rest banner controls during rest; minimizing keeps the session alive.</li>
+              <li>If you leave the screen, return from the active workout banner before starting over.</li>
+            </ol>
+            <div class="meta">Report if typed sets disappear, the app crashes, or old history appears as today's logged data.</div>
+          </article>
+
+          <article class="task" id="exercise-search">
+            <h3>Find or add an exercise</h3>
+            <p>Exercise search should help you start or edit sessions without blocking your workout.</p>
+            <ol>
+              <li>Open Workout and use add or swap exercise from the workout flow.</li>
+              <li>Search the closest exercise name first.</li>
+              <li>If the exercise is missing, use the custom exercise path or report the exact name from Help.</li>
+            </ol>
+            <div class="meta">Report the missing exercise name if search cannot find or save it.</div>
+          </article>
+
+          <article class="task" id="progress">
+            <h3>Use Progress</h3>
+            <p>Progress shows trends, tappable insights, and recent proof from workouts, body metrics, habits, and devices.</p>
+            <ol>
+              <li>Open Progress from the bottom tab.</li>
+              <li>Choose the relevant section, then tap cards that show a chevron or clear action styling.</li>
+              <li>If a completed workout is missing, refresh the app and check the date filter.</li>
+            </ol>
+            <div class="meta">Report if a card looks tappable but does nothing, or if a workout does not update Progress.</div>
+          </article>
+
+          <article class="task" id="food">
+            <h3>Use Food and macro views</h3>
+            <p>For users who enabled food support, Food and Progress nutrition views show logs, calories, and macros.</p>
+            <ol>
+              <li>Open Food to log or review items for the selected day.</li>
+              <li>Open Progress and use Nutrition to review calorie and macro trends.</li>
+              <li>If totals look wrong, check the selected day and logged item portions.</li>
+            </ol>
+            <div class="meta">Report if totals differ after refresh or the day selection is wrong.</div>
+          </article>
+
+          <article class="task" id="devices">
+            <h3>Check connected devices</h3>
+            <p>Wearable settings show connection and permission state. EnerZee should not claim imported provider data unless the app shows it.</p>
+            <ol>
+              <li>Open Profile, then connected devices or wearable settings.</li>
+              <li>Check whether the provider shows connected, disconnected, or needs permission.</li>
+              <li>If Fitbit returns to sign-in or Apple Health does not connect, report the provider and what happened after the tap.</li>
+            </ol>
+            <div class="meta">Supported public help: Apple Health, Health Connect, Fitbit, WHOOP, Strava, and Oura.</div>
+          </article>
+
+          <article class="task" id="account">
+            <h3>Fix account, billing, or privacy requests</h3>
+            <p>Account access issues are usually specific to sign-in, verification, subscription, or device state.</p>
+            <ol>
+              <li>Check that the same email or provider was used to sign in.</li>
+              <li>Close and reopen EnerZee so the app can refresh access.</li>
+              <li>For export, correction, or deletion requests, use the email tied to your EnerZee account.</li>
+            </ol>
+            <div class="meta">Use support for purchase account, device, locked screen, or privacy request details.</div>
+          </article>
+
+          <article class="task" id="status">
+            <h3>Check EnerZee status</h3>
+            <p>Status checks explain the likely failure area without claiming a live provider outage.</p>
+            <ol>
+              <li>Open Help and review Status checks.</li>
+              <li>Retry the failed action once if the app is responsive.</li>
+              <li>For provider handoff issues, check permissions and whether the provider returned to EnerZee.</li>
+            </ol>
+            <div class="meta">Report if the same action fails twice or the app cannot show a current state.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="coach">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">AI Coach boundaries</span>
+            <h2>What Coach can and cannot do for app help.</h2>
+          </div>
+          <p>Coach can explain supported app tasks. It should not invent controls, claim sync success without visible app state, or pretend a report was reviewed.</p>
+        </div>
+        <div class="boundary">
+          <div class="boundary-card">
+            <h3>Coach can help with</h3>
+            <ul>
+              <li>Finding the right screen or tab.</li>
+              <li>Explaining Today, Workout, Progress, Food, Profile, and Help actions.</li>
+              <li>Turning unclear app issues into a useful bug report.</li>
+              <li>Explaining what evidence the app currently shows.</li>
+            </ul>
+          </div>
+          <div class="boundary-card dark">
+            <h3>Coach should never do</h3>
+            <ul>
+              <li>Invent a button, page, setting, or integration that is not in the approved guide.</li>
+              <li>Claim Apple, Fitbit, WHOOP, Strava, Oura, or Health Connect data synced unless the app shows it.</li>
+              <li>Say a bug is resolved before the app or support team confirms it.</li>
+              <li>Push unrelated tracking to training-first users.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="report">
+      <div class="container">
+        <div class="report-band">
+          <div>
+            <span class="eyebrow">Support path</span>
+            <h2>Send a report that the team can actually use.</h2>
+            <p>Best report: what screen you were on, what you tapped, what you expected, what happened, app build, device, and screenshot. If the app is open, use the Help icon from the screen where the issue happened.</p>
+          </div>
+          <div>
+            <div class="buttons">
+              <a class="button primary" href="mailto:support@enerzee.app?subject=EnerZee%20support%20request">Email support</a>
+              <a class="button secondary" href="/support.html">Open support form</a>
+              <a class="button secondary" href="/delete-account/">Delete account request</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>&copy; 2026 EnerZee. All rights reserved.</span>
+      <span>
+        <a href="/">Home</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/support.html">Support</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const personaContent = {
+      fitness: {
+        title: 'General fitness user',
+        body: 'Balanced training, body metrics, habits, progress, and optional food support.',
+        actions: [
+          ['Profile ready', 'Your goal, preferences, body stats, and targets are saved.'],
+          ['Create or review today', 'Start with meal plan, workout, daily basics, or Coach guidance.'],
+          ['Set a progress baseline', 'Open Progress and add weight, steps, sleep, or wearable data.'],
+          ['Ask AI Coach once', 'Ask what one useful action fits today.']
+        ]
+      },
+      training: {
+        title: 'Training-first user',
+        body: 'Workout, progress, recovery, and device help without unrelated tracking prompts.',
+        actions: [
+          ['Open the workout tab', 'Review training options and start the session when ready.'],
+          ['Set a progress baseline', 'Use weight, sleep, steps, recovery, session quality, or wearable data.'],
+          ['Ask AI Coach once', 'Ask for one movement or recovery action today.'],
+          ['Report workout issues quickly', 'Use Help if sets disappear, old history appears, or resume fails.']
+        ]
+      },
+      diet: {
+        title: 'Diet-only user',
+        body: 'Meal planning, logging, calories, macros, and calm progress help without workout pressure.',
+        actions: [
+          ['Create your first meal plan', 'Generate a plan so EnerZee can guide the rest of the day.'],
+          ['Log your first meal', 'This calibrates calories, macros, and the next best meal.'],
+          ['Open Progress', 'Review weight trend, food consistency, and nutrition views.'],
+          ['Ask AI Coach once', 'Ask what to eat next or why a target changed.']
+        ]
+      },
+      bodybuilding: {
+        title: 'Bodybuilding user',
+        body: 'Logbook, workout session, progression, weak-point, recovery, and support help.',
+        actions: [
+          ['Start the workout cleanly', 'Use today set rows, not old history, as current session data.'],
+          ['Track progression', 'Review repeated lifts, volume, intensity, and weak-point signals.'],
+          ['Use Progress', 'Check measurements, session quality, recovery, and performance trend.'],
+          ['Ask Coach for execution', 'Ask about target muscle, pump, weak points, and recovery constraints.']
+        ]
+      },
+      advanced: {
+        title: 'Advanced natural physique user',
+        body: 'Push, hold, or deload decisions plus measurement, recovery, and performance help.',
+        actions: [
+          ['Look for the day call', 'Today and Coach should make push, hold, or deload language visible.'],
+          ['Keep recovery constraints visible', 'Check sleep, readiness, recent load, and session quality.'],
+          ['Review measurements', 'Use Progress for body metrics and performance trend.'],
+          ['Report stale data', 'Old session stats must never appear as today logged values.']
+        ]
+      }
+    };
+
+    function renderPersona(key) {
+      const data = personaContent[key] || personaContent.fitness;
+      const panel = document.getElementById('personaPanel');
+      panel.innerHTML = `
+        <h3>${data.title}</h3>
+        <p style="color: var(--muted); max-width: 760px; margin-top: 8px;">${data.body}</p>
+        <div class="first-actions">
+          ${data.actions.map(([title, text]) => `<div class="action"><b>${title}</b><span>${text}</span></div>`).join('')}
+        </div>
+      `;
+      document.querySelectorAll('.tab').forEach((tab) => {
+        tab.classList.toggle('active', tab.dataset.persona === key);
+      });
+    }
+
+    document.querySelectorAll('.tab').forEach((tab) => {
+      tab.addEventListener('click', () => renderPersona(tab.dataset.persona));
+    });
+    renderPersona('fitness');
+  </script>
+</body>
+</html>
