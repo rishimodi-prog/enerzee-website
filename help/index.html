@@ -160,6 +160,23 @@
       font-weight: 700;
       font-size: 14px;
     }
+    .task-media {
+      height: 260px;
+      margin: 16px 0 4px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #EFEAE0;
+      box-shadow: 0 10px 24px rgba(18,35,29,0.08);
+    }
+    .task-media.tall { height: 320px; }
+    .task-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
     .boundary {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -174,6 +191,22 @@
     .boundary-card.dark { background: var(--ink); color: var(--cream); border-color: transparent; }
     .boundary-card.dark p, .boundary-card.dark li { color: rgba(255,253,248,0.72); }
     .boundary-card ul { padding-left: 20px; margin-top: 12px; }
+    .coach-shot {
+      height: 340px;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #EFEAE0;
+      box-shadow: var(--shadow);
+    }
+    .coach-shot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
     .report-band {
       background: var(--deep-sage);
       color: var(--cream);
@@ -197,6 +230,22 @@
     }
     .button.primary { background: var(--mint); color: var(--ink); border-color: var(--mint); }
     .button.secondary { color: var(--cream); }
+    .support-screens {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .support-screens img {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 14px;
+      border: 1px solid rgba(255,253,248,0.18);
+      background: rgba(255,253,248,0.08);
+    }
     footer {
       border-top: 1px solid var(--line);
       padding: 32px 0;
@@ -239,7 +288,7 @@
         <div class="quick-grid" aria-label="Common help shortcuts">
           <a class="quick-card" href="#active-workout"><strong>Active workout</strong><span>Keep sets, rest timer, edits, and resume behavior clear.</span></a>
           <a class="quick-card" href="#progress"><strong>Progress</strong><span>Read trends, tappable cards, and missing updates.</span></a>
-          <a class="quick-card" href="#devices"><strong>Devices</strong><span>Check Apple Health, Health Connect, Fitbit, WHOOP, Strava, and Oura state.</span></a>
+          <a class="quick-card" href="#devices"><strong>Devices</strong><span>Check Apple Health, Health Connect, Fitbit, and WHOOP state.</span></a>
           <a class="quick-card" href="#report"><strong>Report a bug</strong><span>Send screen, build, screenshot, and recovery path.</span></a>
         </div>
       </div>
@@ -278,6 +327,9 @@
           <article class="task" id="today">
             <h3>Use Today</h3>
             <p>Today is the first tab and shows the most useful actions for the day.</p>
+            <figure class="task-media">
+              <img src="/assets/screenshots/help/today.png" alt="EnerZee Today screen showing the current focus rings and next best actions." loading="lazy" />
+            </figure>
             <ol>
               <li>Open Today from the first tab.</li>
               <li>Start with the top focus card, then use the visible task cards for the day.</li>
@@ -289,6 +341,9 @@
           <article class="task" id="active-workout">
             <h3>Use an active workout</h3>
             <p>Active Workout keeps the session running while you log sets, rest, or minimize.</p>
+            <figure class="task-media tall">
+              <img src="/assets/screenshots/help/active-workout.png" alt="EnerZee Active Workout screen with current set rows, history reference, coach call, and add set controls." loading="lazy" />
+            </figure>
             <ol>
               <li>Open Workout and start a program or custom workout.</li>
               <li>Type today's kg and reps into the current set rows.</li>
@@ -312,6 +367,9 @@
           <article class="task" id="progress">
             <h3>Use Progress</h3>
             <p>Progress shows trends, tappable insights, and recent proof from workouts, body metrics, habits, and devices.</p>
+            <figure class="task-media">
+              <img src="/assets/screenshots/help/progress.png" alt="EnerZee Progress screen with tabs and tappable progress cards." loading="lazy" />
+            </figure>
             <ol>
               <li>Open Progress from the bottom tab.</li>
               <li>Choose the relevant section, then tap cards that show a chevron or clear action styling.</li>
@@ -323,6 +381,9 @@
           <article class="task" id="food">
             <h3>Use Food and macro views</h3>
             <p>For users who enabled food support, Food and Progress nutrition views show logs, calories, and macros.</p>
+            <figure class="task-media">
+              <img src="/assets/screenshots/help/food.png" alt="EnerZee Food screen with meal plan and calorie tracking for the selected day." loading="lazy" />
+            </figure>
             <ol>
               <li>Open Food to log or review items for the selected day.</li>
               <li>Open Progress and use Nutrition to review calorie and macro trends.</li>
@@ -334,12 +395,15 @@
           <article class="task" id="devices">
             <h3>Check connected devices</h3>
             <p>Wearable settings show connection and permission state. EnerZee should not claim imported provider data unless the app shows it.</p>
+            <figure class="task-media">
+              <img src="/assets/screenshots/help/devices.png" alt="EnerZee Devices screen showing Fitbit, Whoop, and Apple Health connection options." loading="lazy" />
+            </figure>
             <ol>
               <li>Open Profile, then connected devices or wearable settings.</li>
               <li>Check whether the provider shows connected, disconnected, or needs permission.</li>
               <li>If Fitbit returns to sign-in or Apple Health does not connect, report the provider and what happened after the tap.</li>
             </ol>
-            <div class="meta">Supported public help: Apple Health, Health Connect, Fitbit, WHOOP, Strava, and Oura.</div>
+            <div class="meta">Visible in the current app: Fitbit, WHOOP, and Apple Health on iOS; Health Connect appears on Android.</div>
           </article>
 
           <article class="task" id="account">
@@ -390,12 +454,15 @@
             <h3>Coach should never do</h3>
             <ul>
               <li>Invent a button, page, setting, or integration that is not in the approved guide.</li>
-              <li>Claim Apple, Fitbit, WHOOP, Strava, Oura, or Health Connect data synced unless the app shows it.</li>
+              <li>Claim Apple, Fitbit, WHOOP, or Health Connect data synced unless the app shows it.</li>
               <li>Say a bug is resolved before the app or support team confirms it.</li>
               <li>Push unrelated tracking to training-first users.</li>
             </ul>
           </div>
         </div>
+        <figure class="coach-shot">
+          <img src="/assets/screenshots/help/ai-coach.png" alt="EnerZee AI Coach screen with quick actions and a chat input." loading="lazy" />
+        </figure>
       </div>
     </section>
 
@@ -408,6 +475,10 @@
             <p>Best report: what screen you were on, what you tapped, what you expected, what happened, app build, device, and screenshot. If the app is open, use the Help icon from the screen where the issue happened.</p>
           </div>
           <div>
+            <div class="support-screens" aria-label="Help and bug report screenshots">
+              <img src="/assets/screenshots/help/help.png" alt="EnerZee Help Center inside the app." loading="lazy" />
+              <img src="/assets/screenshots/help/bug-report.png" alt="EnerZee bug report screen for sending useful support details." loading="lazy" />
+            </div>
             <div class="buttons">
               <a class="button primary" href="mailto:support@enerzee.app?subject=EnerZee%20support%20request">Email support</a>
               <a class="button secondary" href="/support.html">Open support form</a>
