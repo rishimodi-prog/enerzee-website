@@ -831,6 +831,7 @@
       font-size: 12px;
       color: var(--text-muted);
     }
+    .wearable-pill.pending { opacity: 0.5; border-style: dashed; }
     .wearable-sample {
       max-width: 580px;
       margin: 0 auto;
@@ -1247,25 +1248,17 @@
           <span class="eyebrow">Premium AI Fitness Coach · TestFlight Now Open</span>
           <h1>The fitness app that <span class="accent">actually thinks.</span></h1>
           <p class="hero-subhead">Multi-stage AI coaching with shipped memory, science citations, and an accountability loop.</p>
-          <p class="hero-body">Other apps run a single LLM and hope. EnerZee runs deterministic rules, an LLM reviewer, a self-critic, and outcome learning — together. Every recommendation is grounded in research it can cite, every food estimate is cross-verified, and every memory is yours to inspect, edit, or delete.</p>
+          <p class="hero-body">Other apps run a single LLM and hope. EnerZee runs deterministic rules first, an LLM that reviews them, and a critic that checks the low-confidence calls. Science questions are answered from a retrieved corpus of peer-reviewed research — with citations pulled from the papers themselves, so they can't be invented. And every memory it keeps about you is yours to inspect, edit, or delete.</p>
           <div class="hero-ctas">
             <a href="https://testflight.apple.com/join/AESKTajK" target="_blank" rel="noopener" class="btn btn-primary-on-dark" data-testflight>Join the TestFlight →</a>
             <a href="#waitlist" class="hero-secondary-link">Or get notified when we launch publicly</a>
           </div>
           <div class="trust-strip">
-            <span>Coach reasoning scorecard: 10 / 10</span>
-            <span>Cross-verified food database</span>
-            <span>7 wearable integrations</span>
+            <span><span data-live="papers_cited">71,060</span> research citations</span>
+            <span>Source-labelled food logging</span>
+            <span>4 wearable integrations</span>
             <span>Privacy-first memory</span>
           </div>
-          <a href="#trust" class="hero-benchmark" aria-label="See our Trust &amp; Evidence benchmark">
-            <span class="hb-label">Benchmark-tested for safety &amp; nutrition accuracy</span>
-            <span class="hb-chips">
-              <span class="hb-chip win"><strong>84.5%</strong> EnerZee coach</span>
-              <span class="hb-chip"><strong>80.5%</strong> standalone ChatGPT 5.5</span>
-            </span>
-            <span class="hb-caption">Head-to-head on 41 expert-graded health &amp; nutrition cases — EnerZee internal benchmark, July 2026. →</span>
-          </a>
         </div>
         <div>
           <div class="demo-card">
@@ -1315,8 +1308,8 @@
           <div class="why-row"><div class="why-row-label">Rule</div><div class="why-row-value">Evening training → moderate carbs help recovery</div></div>
           <div class="why-row"><div class="why-row-label">Reasoning</div><div class="why-row-value">Your last 4 sessions logged progressive PRs on full-carb days</div></div>
           <div class="why-row"><div class="why-row-label">Memory</div><div class="why-row-value">You mentioned poor sleep last week → no late stimulants</div></div>
-          <div class="why-row"><div class="why-row-label">Citations</div><div class="why-row-value">Burke 2018 · Helms 2014 · Aragon 2017 — tap to read</div></div>
-          <div class="why-row"><div class="why-row-label">Confidence</div><div class="why-row-value"><span class="why-confidence">87% — want more context?</span></div></div>
+          <div class="why-row"><div class="why-row-label">Citations</div><div class="why-row-value">Burke 2018 · Helms 2014 · Aragon 2017 — tap to read on PubMed</div></div>
+          <div class="why-row"><div class="why-row-label">Evidence grade</div><div class="why-row-value"><span class="why-confidence">High — each source carries its own grade</span></div></div>
         </div>
       </div>
       <p class="demo-caption">That's a real coach behavior, shipped today. Not a roadmap promise.</p>
@@ -1328,7 +1321,7 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Architecture</span>
-        <h2>Four layers. Every recommendation passes through all of them.</h2>
+        <h2>Four layers, and none of them is "ask the model and hope."</h2>
         <p>This is what most "AI fitness apps" don't have.</p>
       </div>
       <div class="arch-grid reveal-stagger">
@@ -1344,13 +1337,13 @@
         </div>
         <div class="arch-card">
           <div class="arch-number">03</div>
-          <h3>A self-critic checks the LLM.</h3>
-          <p>If confidence is low, a second pass critiques the first. It looks for safety blind spots, unsupported claims, missing context. It can override the first model.</p>
+          <h3>A critic checks the uncertain calls.</h3>
+          <p>When the reviewer's confidence falls below threshold, a second pass critiques the first — looking for safety blind spots, unsupported claims, missing context. It can override the first model.</p>
         </div>
         <div class="arch-card">
           <div class="arch-number">04</div>
-          <h3>Outcome learning.</h3>
-          <p>What worked for you last week feeds into next week's prior. Not as a black box — as a memory you can see, edit, and delete.</p>
+          <h3>Safety sits above all of it.</h3>
+          <p>Thirteen categories — emergency symptoms, disordered eating, pregnancy, medications, PEDs, minors — short-circuit <em>before any model runs</em> and return a written response, not a generated one. The model never gets the chance to improvise.</p>
         </div>
       </div>
       <p class="pull-quote">"Every other AI fitness app runs one model and hopes."</p>
@@ -1368,22 +1361,22 @@
         <div class="module-card module-lead">
           <div class="module-icon">T</div>
           <h3>Today — your daily command center</h3>
-          <p>Open the app to one screen that already knows your day: a momentum strip, streak-freeze insurance, a proactive coach insight, and an end-of-day reflection that sets tomorrow's if-then intention. The coach comes to you — no digging required. There's even an optional, privacy-first glimpse of how a similar member trained, shown only when the cohort is large enough to stay anonymous.</p>
+          <p>Open the app to one screen that already knows your day: your muscle-coverage map across the last two weeks, calories and macros against target, steps, sleep and water, and — if you've connected a wearable — an HRV and resting-heart-rate readout. Below it, the three things actually worth doing today. Streak-freeze credits build up quietly so one missed day doesn't undo a month.</p>
         </div>
         <div class="module-card">
           <div class="module-icon">A</div>
           <h3>AI Coach</h3>
-          <p>Natural-language chat — typed or spoken via voice, with the coach able to read answers back aloud. Full context: profile, today's logs, training history, what worked, what didn't. Asks clarifying questions instead of guessing, and routes to specialist lanes (hypertrophy, supplements, injury-aware, wellness) when your question needs depth. It adapts to your onboarding intent — workouts-only, just meal ideas, or a gentler relationship with food — and anchors to the personal reason you gave for starting, so your <em>why</em> resurfaces when motivation flags.</p>
+          <p>Natural-language chat, with an option to have answers read back aloud. Full context: profile, today's logs, training history, the corrections you've made, and — with a wearable connected — your sleep, HRV, recovery and strain. Asks clarifying questions instead of guessing, and routes to specialist lanes (hypertrophy, supplements, injury-aware, wellness) when your question needs depth. It adapts to your onboarding intent — workouts-only, just meal ideas, or a gentler relationship with food — and anchors to the personal reason you gave for starting, so your <em>why</em> resurfaces when motivation flags.</p>
         </div>
         <div class="module-card">
           <div class="module-icon">F</div>
           <h3>Food, with trust labels</h3>
-          <p>Log in plain language — type it or say it out loud ("two rotis with rajma and a small bowl of curd"). Every item gets a confidence label: verified, database, external, or AI-estimated, with low-trust items quarantined until confirmed. A second AI cross-checks the first. Meal plans respect your budget, cooking skill, and disliked foods. Logs save offline and sync when you're back online — you never lose an entry.</p>
+          <p>Log in plain language — "two rotis with rajma and a small bowl of curd" — and every item comes back labelled with where its numbers came from: verified, database, external provider, or AI-estimated, with low-trust items held until you confirm. Override a value and the original source stays visible next to yours. Resolution runs against USDA FoodData Central, Open Food Facts, Edamam and FatSecret, plus our own verified and community-contributed entries. Meal plans respect your budget, cooking skill, and disliked foods. Logs save offline and sync when you're back online — you never lose an entry.</p>
         </div>
         <div class="module-card">
           <div class="module-icon">W</div>
           <h3>Periodized workouts</h3>
-          <p>4 to 7-week periodized blocks designed upfront — accumulation, intensification, peaking, deload. 6,000+ exercises, each with an animated demo (male and female variants). PR tracking, supersets, RPE, equipment-aware swaps, and an iOS Live Activity rest timer on your lock screen. A built-in plate calculator, form guide overlays with video cues, and an auto warm-up generator before every session. Voice logging mid-set — say "100 for 8" and the app writes it. After each set you can log reps in reserve, and one tap can reduce the load, extend rest, report discomfort, or open a mid-workout Coach Call grounded in the set you just finished — the coach adapts the rest of the session. Programs prioritize the muscles you flagged as weak points, and if you miss a week the plan shifts forward — you don't fall behind.</p>
+          <p>100 pre-built programs running 4 to 12 weeks, with periodization and deload weeks designed in — every set carrying a target RPE, not just sets and reps. 714 reviewed exercises, each with setup steps, form checkpoints, common mistakes and goal-specific dosing; 475 have male and female demonstration images. PR tracking, supersets, RPE and reps-in-reserve, equipment-aware swaps, and an iOS Live Activity rest timer on your lock screen and Dynamic Island. A built-in plate calculator, form guide overlays, and warm-up ramps calculated from your working weight. Voice logging mid-set — say "100 for 8" and the app writes it. One tap can reduce the load, extend rest, report discomfort, or open a mid-workout Coach Call grounded in the set you just finished. Miss a week and the plan shifts forward — you don't fall behind.</p>
         </div>
         <div class="module-card">
           <div class="module-icon">P</div>
@@ -1399,24 +1392,24 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Auditable</span>
-        <h2>An AI coach with a published academic scorecard.</h2>
-        <p>Most fitness apps say they're "science-backed." We grade ourselves on it. The EnerZee Coach Reasoning Scorecard is a measurable rubric covering literature grounding, memory provenance, self-critique, safety protocols, and outcome learning. Right now we score a verified 10 out of 10 — PhD-level on that rubric — with <strong><span data-live="papers_cited">39,386</span> papers cited inline from <span data-live="journals">3,476</span> journals</strong> behind it. If we make a claim, we can back it. Every release is re-audited against the same rubric, so the score reflects the live system — not a one-time review.</p>
+        <h2>Citations you can click, from papers we actually retrieved.</h2>
+        <p>Most fitness apps say they're "science-backed" and leave it there. When you ask EnerZee a science question, it searches a corpus of <strong><span data-live="papers_cited">71,060</span> peer-reviewed references across <span data-live="journals">5,827</span> journals</strong> and answers from what it finds. The citations you see are built from the retrieved records themselves — not written by the model — so they can't be invented. A separate check re-reads the answer against those records and flags anything it can't ground.</p>
       </div>
       <div class="stat-row reveal-stagger">
         <div class="stat-card">
-          <div class="stat-label">Coach Reasoning Scorecard</div>
-          <div class="stat-value">10 <span style="font-size: 22px; color: var(--text-muted);">/ 10</span></div>
-          <div class="stat-sub">PhD-level verified · re-audited every release</div>
+          <div class="stat-label">Peer-reviewed references</div>
+          <div class="stat-value" data-live="papers_cited">71,060</div>
+          <div class="stat-sub">Across <span data-live="journals">5,827</span> journals — click any citation to read</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Papers cited inline</div>
-          <div class="stat-value" data-live="papers_cited">39,386</div>
-          <div class="stat-sub">Across <span data-live="journals">3,476</span> journals — click any citation to read</div>
+          <div class="stat-label">Traceable to PubMed</div>
+          <div class="stat-value">99.97<span style="font-size: 22px; color: var(--text-muted);">%</span></div>
+          <div class="stat-sub">71,042 carry a PubMed ID · 68,809 a DOI</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Cross-model food checks</div>
-          <div class="stat-value">100<span style="font-size: 22px; color: var(--text-muted);">%</span></div>
-          <div class="stat-sub">Every estimate verified</div>
+          <div class="stat-label">Graded high-evidence</div>
+          <div class="stat-value" data-live="high_evidence">17,261</div>
+          <div class="stat-sub">Every source carries its own evidence grade</div>
         </div>
       </div>
       <p class="reveal" style="text-align: center; max-width: 680px; margin: 48px auto 0; color: var(--text-muted); font-size: 16.5px; line-height: 1.6;">Your in-app research feed adds new studies as they're indexed and graded. Tap <strong>"Ask Coach about this paper"</strong> on any of them to see exactly what it changes for your training.</p>
@@ -1430,22 +1423,11 @@
       <!-- Block 1: Headline evidence -->
       <div class="section-head reveal">
         <span class="eyebrow">Trust &amp; Evidence</span>
-        <h2>Built to a measurable standard — and tested against it.</h2>
-        <p>EnerZee's coach is benchmarked on real health-safety and nutrition questions, graded against expert rubrics.</p>
+        <h2>The safety layer runs before the model does.</h2>
+        <p>Most of what keeps a health chatbot safe is what it never gets to say. EnerZee checks every message against thirteen risk categories first — and where one matches, the answer is written, not generated.</p>
       </div>
-      <div class="benchmark-grid reveal-stagger">
-        <div class="stat-card benchmark-card win">
-          <div class="stat-value">84.5%</div>
-          <div class="bench-label">EnerZee coach</div>
-        </div>
-        <div class="stat-card benchmark-card">
-          <div class="stat-value">80.5%</div>
-          <div class="bench-label">Standalone ChatGPT 5.5 (no coaching prompt)</div>
-        </div>
-      </div>
-      <p class="bench-caption">EnerZee internal benchmark — safety + nutrition rubric, 41 cases graded by LLM-judge, July 2026. +9 pts on nutrition-specific criteria.</p>
-      <div class="trust-callout reveal">In our safety tests, a general-purpose model handed over dosing for a potentially lethal weight-loss chemical when asked "for research." EnerZee refused and flagged the danger.</div>
-      <p class="bench-smallprint">EnerZee internal benchmark; benchmark-tested, expert-rubric graded. Not a medical device or diagnostic tool.</p>
+      <div class="trust-callout reveal">Ask a general-purpose model for dosing on a potentially lethal weight-loss chemical "for research" and it may well answer. EnerZee's guardrail intercepts that class of request before any model is called, and responds with a written refusal that carries no numbers at all.</div>
+      <p class="bench-smallprint">Covered categories include emergency symptoms, disordered-eating language, prolonged fasting, extreme calorie targets, unsafe rate-of-loss requests, pregnancy, medications, performance-enhancing drugs, injury escalation, and users under 18. A separate firewall blocks prompt-injection and off-domain requests. Not a medical device or diagnostic tool.</p>
 
       <!-- Block 2: Trust badge wall -->
       <p class="trust-badges-label reveal">What we control</p>
@@ -1454,8 +1436,8 @@
         <span class="trust-badge"><span class="ico">🙅</span> We never sell your data</span>
         <span class="trust-badge"><span class="ico">🇮🇳</span> DPDP-compliant</span>
         <span class="trust-badge"><span class="ico">🇪🇺</span> GDPR-compliant</span>
-        <span class="trust-badge"><span class="ico">♿</span> WCAG 2.1 AA · screen-reader + Dynamic Type</span>
-        <span class="trust-badge"><span class="ico">🧪</span> Benchmark-tested (safety + nutrition)</span>
+        <span class="trust-badge"><span class="ico">♿</span> Screen-reader labelled · in-app text scaling</span>
+        <span class="trust-badge"><span class="ico">🔑</span> No AI keys in the app · authenticated server proxy</span>
         <span class="trust-badge pending"><span class="ico">👩‍⚕️</span> Expert-reviewed content <span class="soon">soon</span></span>
         <span class="trust-badge"><span class="ico">📱</span> Privacy disclosed on App Store &amp; Google Play</span>
       </div>
@@ -1465,13 +1447,13 @@
         <span class="trust-badge pending"><span class="ico">🏆</span> Product Hunt #1 <span class="soon">soon</span></span>
         <span class="trust-badge pending"><span class="ico">💬</span> Trustpilot <span class="soon">soon</span></span>
         <span class="trust-badge earned"><span class="ico">❤️</span> Works with Apple Health</span>
-        <span class="trust-badge earned"><span class="ico">🔬</span> We publish our safety scores — <a href="/responsible-ai">read how</a></span>
+        <span class="trust-badge earned"><span class="ico">🔬</span> How we handle safety — <a href="/responsible-ai">read our approach</a></span>
       </div>
 
       <!-- Block 3: How we test -->
       <div class="trust-how reveal">
         <h3>How we keep the coach safe and accurate</h3>
-        <p>We run EnerZee's coach against a benchmark of health-safety and nutrition scenarios — emergencies, medication questions, unsafe goals, and evidence-based nutrition — each graded against expert-standard rubrics. We test the real product (not a demo), compare it to a standalone AI to prove our safety layer adds value, and re-run it on every release. We publish the score and the date, and never claim a certification we haven't earned.</p>
+        <p>Three things, none of which depend on trusting a model. Risky requests are intercepted before generation and answered from written templates. Science answers are grounded in retrieved papers, and a second pass flags any citation the answer can't support. And the coach is told, in its own instructions, not to claim an exercise is uniquely proven when the evidence behind it is general programming guidance — a line we hold on this page too. We're building an internal benchmark to put numbers on this; until it's reproducible and reviewed by a credentialed dietitian, we're not publishing a score. We'd rather show you the mechanism than a figure you can't check.</p>
       </div>
 
       <!-- Block 4: Disclaimer -->
@@ -1484,15 +1466,17 @@
     <div class="container-narrow">
       <div class="section-head" style="text-align: left; margin-left: 0;">
         <span class="eyebrow">Memory, your way</span>
-        <h2>EnerZee remembers what works for you. You decide what it keeps.</h2>
-        <p style="margin: 0;">Real coaches remember you. They know you train at 9pm, that paneer doesn't sit well, that higher-protein breakfasts cut your late-night cravings. EnerZee builds the same memory — but with rules most apps refuse to follow.</p>
+        <h2>EnerZee remembers you. You decide what it keeps.</h2>
+        <p style="margin: 0;">Real coaches remember you. They know you train at 9pm, that paneer doesn't sit well, that you're working around a bad shoulder. EnerZee builds the same memory — but with rules most apps refuse to follow.</p>
       </div>
       <ul class="memory-list">
-        <li><span class="check">✓</span><span>Every memory shows you <em>why</em> EnerZee believes it.</span></li>
-        <li><span class="check">✓</span><span>You can edit any memory, pause memory entirely, or hard-delete it.</span></li>
-        <li><span class="check">✓</span><span>Sensitive categories (medical, religion, mental health) are off by default and never inferred — only stored if you say them out loud.</span></li>
-        <li><span class="check">✓</span><span>Delete your account and your memory goes with it. Not hidden. Gone.</span></li>
+        <li><span class="check">✓</span><span>Every memory shows you <em>why</em> EnerZee believes it, and where it came from. Provenance is required, not optional.</span></li>
+        <li><span class="check">✓</span><span>Nothing learned from a conversation reaches the coach until you approve it. Suggestions sit in a review queue you control.</span></li>
+        <li><span class="check">✓</span><span>No AI reads your chats to build memory. Extraction is deterministic pattern-matching, and it skips anything about other people, any contact details, and any language suggesting disordered eating.</span></li>
+        <li><span class="check">✓</span><span>Health-related memories — allergies, injuries, conditions — can be excluded from coaching in one switch. You can edit any memory, pause memory entirely, or delete it for good.</span></li>
+        <li><span class="check">✓</span><span>Delete is a real delete, not a hidden flag. Delete your account and your memory goes with it.</span></li>
       </ul>
+      <p class="memory-smallprint" style="margin: 22px 0 0; font-size: 14px; opacity: .68; max-width: 62ch;">Straight about the defaults: memory is <strong>on</strong> when you start, and you turn it off rather than on. The switches are global — memory, chat suggestions, coaching use, and health-sensitive content — not one per category.</p>
     </div>
   </section>
 
@@ -1501,22 +1485,23 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Wearable-aware</span>
-        <h2>Plays nicely with every device you already own.</h2>
-        <p>Apple Health, Health Connect, Fitbit, Garmin, Whoop, Strava, Oura. Heart-rate variability, sleep stages, training load, recovery — all feeding into the coach context when connected and visible in the app.</p>
+        <h2>Your coach can see what your watch sees.</h2>
+        <p>Connect Apple Health, Health Connect, Fitbit or Whoop and your steps, sleep, resting heart rate, HRV, recovery and strain go into the coach's context — so it answers with your actual night behind it, not a generic one. All read-only: EnerZee never writes back to Apple Health or Health Connect.</p>
       </div>
       <div class="wearables-row">
         <div class="wearable-pill">Apple Health</div>
         <div class="wearable-pill">Health Connect</div>
         <div class="wearable-pill">Fitbit</div>
-        <div class="wearable-pill">Garmin</div>
         <div class="wearable-pill">Whoop</div>
-        <div class="wearable-pill">Strava</div>
-        <div class="wearable-pill">Oura</div>
+        <div class="wearable-pill pending">Garmin · soon</div>
+        <div class="wearable-pill pending">Oura · soon</div>
+        <div class="wearable-pill pending">Strava · soon</div>
       </div>
       <div class="wearable-sample">
         <span class="src">Pulse · using wearable context</span>
         "Your HRV dropped 18% overnight — I'd suggest a Zone 2 cardio swap today instead of legs."
       </div>
+      <p class="bench-smallprint" style="margin-top: 18px;">Wearable data shapes what the coach says. It does not silently rewrite your programme — load, volume and targets stay yours to change.</p>
     </div>
   </section>
 
@@ -1526,7 +1511,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">Free to start</span>
         <h2>Start free. Go Pro when the coach earns it.</h2>
-        <p>Everything you need to track is free forever. Pro unlocks unlimited coaching and AI programs whenever you're ready — pricing is shown inside the app, with a 7-day trial and no card required to start.</p>
+        <p>Everything you need to track is free forever. Pro raises the coaching limits and unlocks AI meal and workout programs whenever you're ready — pricing is shown inside the app.</p>
       </div>
       <div class="pricing-grid pricing-grid-solo">
         <div class="pricing-card free-solo">
@@ -1535,12 +1520,13 @@
           <p class="price-sub">A real product, not a trial. No time limit, no card on file.</p>
           <ul class="pricing-features">
             <li class="pricing-feature">Full food + exercise tracking</li>
-            <li class="pricing-feature">Food search across 10+ databases</li>
+            <li class="pricing-feature">Food search across four nutrition databases</li>
             <li class="pricing-feature">Weight, sleep, water logging</li>
             <li class="pricing-feature">Active workout mode + PR tracking</li>
+            <li class="pricing-feature">All 714 exercises, form guides and citations</li>
             <li class="pricing-feature">5 AI coach messages / day</li>
           </ul>
-          <p class="pro-hint">Want unlimited coaching, AI meal + workout programs, and full progress analytics? An optional Pro upgrade lives inside the app — try it free for 7 days, no card required.</p>
+          <p class="pro-hint">Pro raises coaching to 100 messages a day, removes the caps on AI meal and workout programs, and opens the full ready-plan library. An optional upgrade, priced inside the app.</p>
         </div>
       </div>
       <p class="pricing-trust">Free forever · Optional Pro upgrade in-app · No ads · No data sales.</p>
@@ -1564,19 +1550,19 @@
         </details>
         <details class="faq-item">
           <summary>Is the science-backed claim real, or marketing?</summary>
-          <div class="faq-answer">Real. We run a measurable Coach Reasoning Scorecard — a verified 10 / 10 today — with a public methodology, re-audited on every release rather than scored once. Every health claim in the app is grounded in research we can show you. If we ever can't cite it, we don't say it.</div>
+          <div class="faq-answer">Real, and narrower than most apps mean by it. Ask a science question and the coach retrieves from a corpus of 71,060 peer-reviewed references — 99.97% with a PubMed ID — and cites what it actually pulled, with links you can open. A second pass flags any citation the answer can't support. What we don't claim: that every single message carries a citation (retrieval runs on science questions, not small talk), or that we've published a benchmark score. We're building one; until it's reproducible and a credentialed dietitian has reviewed the transcripts, we'd rather show you the mechanism than a number you can't check.</div>
         </details>
         <details class="faq-item">
           <summary>What about my data and privacy?</summary>
-          <div class="faq-answer">Memory is opt-in by category, fully inspectable, editable, and hard-deletable. Sensitive attributes are never inferred — only stored if you state them. Account deletion erases all of it. We do not sell data. We do not run ads.</div>
+          <div class="faq-answer">Memory is on by default and you turn it off — we'd rather say that plainly than call it opt-in. What you get in exchange: every memory is inspectable with its source shown, editable, and deletable for good (a real delete, not a hidden flag). Anything the app picks up from a conversation waits in a review queue until you approve it, and no AI reads your chats to build it — extraction is deterministic pattern-matching that skips other people, contact details, and disordered-eating language. Health-related memories can be excluded from coaching with one switch. Deleting your account removes your profile, logs, chats and memory; a small amount of billing and support telemetry is retained with your identity stripped out. We do not sell data. We do not run ads.</div>
         </details>
         <details class="faq-item">
           <summary>Does it work for vegetarian, vegan, Indian, Mediterranean, or keto diets?</summary>
-          <div class="faq-answer">Yes. The food trust system pulls from 10+ databases — USDA, India's IFCT and INDB, France's CIQUAL, and the Japanese, Thai, and Bangladeshi food-composition tables, plus FatSecret, Edamam, and Open Food Facts. Vegetarian, vegan, eggetarian, pescatarian, Jain, halal, keto, paleo, gluten-free, Mediterranean, South Asian, Middle Eastern, and Western diets are all supported. Niche regional cuisines: file requests in-app and we add them.</div>
+          <div class="faq-answer">Yes. Food resolution runs against USDA FoodData Central, Open Food Facts, Edamam and FatSecret, plus our own verified database and community-contributed entries — with Indian staples referenced against IFCT 2017 values. Vegetarian, vegan, eggetarian, pescatarian, Jain, sattvic, halal, gluten-free and lactose-free are enforced as hard filters on generated meal plans. Keto, paleo and Mediterranean are honoured in planning but not filtered afterwards, so check those plans. Niche regional cuisines: file requests in-app and we add them.</div>
         </details>
         <details class="faq-item">
           <summary>How much does it cost?</summary>
-          <div class="faq-answer">The Free tier is real and forever — full tracking, 10+ food databases, weight/sleep/water logging, active workouts, PR tracking, and 5 AI coach messages per day. An optional Pro upgrade (monthly or annual) unlocks unlimited coaching, AI meal + workout programs, and full progress analytics. Pricing is shown inside the app, with a 7-day free trial and no card required to start. Regionally priced for Tier 1, India, SEA, LATAM, MEA, and GCC.</div>
+          <div class="faq-answer">The Free tier is real and forever — full tracking, four nutrition databases, weight/sleep/water logging, active workouts, PR tracking, all 714 exercises with their form guides, and 5 AI coach messages per day. An optional Pro upgrade (monthly or annual) raises coaching to 100 messages a day, removes the monthly caps on AI meal and workout programs, opens the full ready-plan library, and adds in-workout voice logging and Coach Call. Pricing is shown inside the app, regionally set for Tier 1, India, SEA, LATAM, MEA, and GCC.</div>
         </details>
         <details class="faq-item">
           <summary>When does it launch?</summary>
@@ -1588,7 +1574,7 @@
         </details>
         <details class="faq-item">
           <summary>Metric or imperial?</summary>
-          <div class="faq-answer">Both. Switch between kg and lbs anytime in settings — your plans, logs, and analytics all follow.</div>
+          <div class="faq-answer">Both for logging — switch between kg and lbs anytime, and the active workout screen follows. Being straight with you: several progress charts still render in kg only. That's on the fix list, not a design choice.</div>
         </details>
         <details class="faq-item">
           <summary>Can I use EnerZee without tracking food?</summary>
@@ -1612,7 +1598,7 @@
       <div class="founder-body">
         <p>I've used every fitness app on the market. Most of them treat you like a row in a spreadsheet. The good ones track macros well. The popular ones make logging fun. None of them coach.</p>
         <p>A coach knows what you ate, what you trained, what worked last time, what your sleep did to your hunger last week. A coach can tell you <em>why</em> the recommendation is what it is — and disagree with itself when the evidence changes. That's what EnerZee is built to be. Not a tracker that bolted on a chat window, but a coach with a multi-layer brain, real memory, and the honesty to show its work.</p>
-        <p>If that resonates, join the TestFlight. Tell us what we get wrong. The scorecard reads a verified 10 / 10 today — but a rubric we wrote, grading ourselves, isn't the same as being perfect. That's what your feedback is for.</p>
+        <p>If that resonates, join the TestFlight. Tell us what we get wrong — and there will be things. We've deliberately kept a benchmark score off this page until it's reproducible and reviewed by someone with credentials we don't have. Grading yourself isn't evidence. Your feedback is closer to it.</p>
         <p class="founder-sig">— Rishi, founder</p>
       </div>
     </div>
@@ -1650,7 +1636,7 @@
             <img src="/assets/logo-dark-surface.png" alt="" />
             <span>EnerZee</span>
           </div>
-          <p>Built with research, memory, and a working scorecard.</p>
+          <p>Built with retrieved research, memory you control, and safety that runs first.</p>
         </div>
         <div class="footer-col">
           <h4>Product</h4>
