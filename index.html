@@ -1681,10 +1681,13 @@
       // Pull the real research-library counts from Supabase (aggregate-only RPC,
       // no row data exposed). Hardcoded numbers in the markup are the fallback.
       var SUPABASE_URL = 'https://klynvkibkudgprctqzyr.supabase.co';
-      var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtseW52a2lia3VkZ3ByY3RxenlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2NjAxNjgsImV4cCI6MjA5MDIzNjE2OH0.DJNLhPha4Xh-Q5JB2eWOvcSld36ZwfLWyhVglb3_33E';
+      // Publishable key: public by design, like the legacy anon key it replaces.
+      // Supabase is retiring the legacy JWT keys, which can only be switched off
+      // together. A publishable key is not a JWT, so it goes on apikey only.
+      var SUPABASE_KEY = 'sb_publishable_spbQVNaGT2VgiZRWzdBRQg_TDgxiKbn';
       fetch(SUPABASE_URL + '/rest/v1/rpc/get_research_stats', {
         method: 'POST',
-        headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json' },
+        headers: { 'apikey': SUPABASE_KEY, 'Content-Type': 'application/json' },
         body: '{}'
       })
         .then(function (r) { return r.ok ? r.json() : null; })
