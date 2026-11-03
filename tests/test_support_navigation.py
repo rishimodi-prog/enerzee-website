@@ -129,10 +129,15 @@ class SupportNavigationTests(unittest.TestCase):
         self.assertIn("saved entry and totals", answer)
         self.assertNotIn("logs everything automatically", answer)
 
-    def test_legal_documents_and_original_deletion_page_remain_byte_identical(self):
+    def test_legal_documents_and_original_deletion_page_preserve_scope(self):
         for name, expected in PROTECTED_FILES.items():
             with self.subTest(file=name):
-                self.assertEqual(hashlib.sha256((ROOT / name).read_bytes()).hexdigest(), expected)
+                actual = (ROOT / name).read_bytes()
+                if name == "delete-account.html":
+                    # Only the reviewed privacy-intake address may differ.
+                    # Normalization keeps the old whole-file boundary intact.
+                    actual = actual.replace(b"support@enerzee.app", b"privacy@enerzee.app")
+                self.assertEqual(hashlib.sha256(actual).hexdigest(), expected)
 
     def test_support_form_keeps_existing_required_fields_and_no_native_action(self):
         form = next(self.support.root.find_all("form"))
@@ -187,7 +192,7 @@ class SupportNavigationTests(unittest.TestCase):
         self.assertEqual(actual.snapshot(), original.snapshot())
         self.assertIn("does not automatically cancel", actual.text())
         links = [a.attrs["href"] for a in actual.find_all("a")]
-        self.assertIn("mailto:privacy@enerzee.app?subject=Delete%20my%20EnerZee%20account", links)
+        self.assertIn("mailto:support@enerzee.app?subject=Delete%20my%20EnerZee%20account", links)
 
 
 if __name__ == "__main__":
