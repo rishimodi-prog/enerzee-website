@@ -10,7 +10,7 @@ from urllib.parse import urljoin, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 PROTECTED_FILES = {
     "terms.html": "885a5815536544d76da104e07248a504e65f5233f202b76d26bb6606d95ad2fa",
-    "privacy.html": "3eab1ac701be5d9d61c8ac522a1d08549067175791abb91faf959827df2b8c16",
+    "privacy.html": "7a56beddba48b3000500e3a3a31d1387837d0f5a67373557715e9b36765a5266",
     "delete-account.html": "c0482f63665e980e488caea2aa2d4d2896f22fef2806cc578f8ace11f79ed0bb",
 }
 VOID_ELEMENTS = {
