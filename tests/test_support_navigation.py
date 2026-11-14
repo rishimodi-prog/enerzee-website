@@ -134,8 +134,14 @@ class SupportNavigationTests(unittest.TestCase):
             with self.subTest(file=name):
                 actual = (ROOT / name).read_bytes()
                 if name == "delete-account.html":
-                    # Only the reviewed privacy-intake address may differ.
-                    # Normalization keeps the old whole-file boundary intact.
+                    age_screen_guidance = (
+                        b"    <p>If EnerZee shows <strong>Confirm your age</strong> or "
+                        b"<strong>Your account is safely paused</strong>, choose "
+                        b"<strong>Delete account</strong> on that screen and follow the "
+                        b"confirmation prompts.</p>\n"
+                    )
+                    self.assertEqual(actual.count(age_screen_guidance), 1)
+                    actual = actual.replace(age_screen_guidance, b"", 1)
                     actual = actual.replace(b"support@enerzee.app", b"privacy@enerzee.app")
                 self.assertEqual(hashlib.sha256(actual).hexdigest(), expected)
 
