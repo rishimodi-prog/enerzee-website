@@ -3,23 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EnerZee — The AI Fitness Coach That Actually Reasons</title>
+  <title>Iron Chapter — Every set. Every bite. AI writes the story.</title>
   <meta name="description" content="Multi-stage AI coaching with shipped memory, science citations, and an accountability loop. Join the TestFlight." />
   <meta name="theme-color" content="#123C2E" />
-  <link rel="canonical" href="https://enerzee.app/" />
+  <link rel="canonical" href="https://theironchapter.com/" />
+  <meta property="og:site_name" content="Iron Chapter" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="800" />
+  <meta property="og:image:alt" content="Iron Chapter infinity mark" />
+  <meta name="twitter:image:alt" content="Iron Chapter infinity mark" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Iron Chapter",
+    "url": "https://theironchapter.com/"
+  }
+  </script>
 
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png" />
 
-  <meta property="og:title" content="EnerZee — Coaching that thinks. Memory that's yours." />
-  <meta property="og:description" content="Other AI fitness apps run one model and hope. EnerZee runs four layers — and shows you every one." />
-  <meta property="og:url" content="https://enerzee.app/" />
+  <meta property="og:title" content="Iron Chapter — Every set. Every bite. AI writes the story." />
+  <meta property="og:description" content="Other AI fitness apps run one model and hope. Iron Chapter runs four layers — and shows you every one." />
+  <meta property="og:url" content="https://theironchapter.com/" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://enerzee.app/assets/og-image.png" />
+  <meta property="og:image" content="https://theironchapter.com/assets/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="EnerZee — Coaching that thinks. Memory that's yours." />
-  <meta name="twitter:description" content="Other AI fitness apps run one model and hope. EnerZee runs four layers — and shows you every one." />
-  <meta name="twitter:image" content="https://enerzee.app/assets/og-image.png" />
+  <meta name="twitter:title" content="Iron Chapter — Every set. Every bite. AI writes the story." />
+  <meta name="twitter:description" content="Other AI fitness apps run one model and hope. Iron Chapter runs four layers — and shows you every one." />
+  <meta name="twitter:image" content="https://theironchapter.com/assets/og-image.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -74,6 +87,7 @@
 
     .section { padding: 120px 0; }
     .section-tight { padding: 80px 0; }
+    #features, #how-it-works { scroll-margin-top: 80px; }
 
     .text-center { text-align: center; }
     .text-muted { color: var(--text-muted); }
@@ -112,7 +126,7 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .nav-brand { display: flex; align-items: center; gap: 10px; }
+    .nav-brand { display: flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 700; white-space: nowrap; }
     .nav-brand img { height: 40px; width: auto; display: block; }
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-links a { font-size: 14.5px; color: var(--text-muted); transition: color 160ms ease; }
@@ -1077,6 +1091,9 @@
       transition: background 160ms ease, transform 160ms ease;
     }
     .waitlist-form button:hover { background: #4FE0A8; transform: translateY(-1px); }
+    .waitlist-form button:disabled { cursor: not-allowed; opacity: .7; }
+    #waitlistFormChallenge:not([hidden]), #waitlistFormStatus:not(:empty) { margin: 12px auto 0; }
+    #waitlistFormChallenge:not([hidden]) { display: flex; justify-content: center; }
     .waitlist-microcopy {
       margin-top: 14px;
       font-family: var(--font-mono);
@@ -1218,8 +1235,8 @@
 <body>
   <nav>
     <div class="container nav-inner">
-      <a href="/" class="nav-brand" aria-label="EnerZee home">
-        <img src="/assets/lockup-horizontal.png" alt="EnerZee" />
+      <a href="/" class="nav-brand" aria-label="Iron Chapter home">
+        <img src="/assets/logo-primary.png" alt="" /><span>Iron Chapter</span>
       </a>
       <div class="nav-links" id="navLinks">
         <a href="#how">How it thinks</a>
@@ -1243,12 +1260,12 @@
           <div class="hero-brand">
             <img class="hero-mark motion" src="/assets/infinity-splash-dark.gif" alt="" />
             <img class="hero-mark static" src="/assets/infinity-static-dark.png" alt="" />
-            <span class="hero-wordmark">EnerZee</span>
+            <span class="hero-wordmark">Iron Chapter</span>
           </div>
           <span class="eyebrow">Premium AI Fitness Coach · TestFlight Now Open</span>
-          <h1>The fitness app that <span class="accent">actually thinks.</span></h1>
+          <h1>Every set. Every bite. <span class="accent">AI writes the story.</span></h1>
           <p class="hero-subhead">Multi-stage AI coaching with shipped memory, science citations, and an accountability loop.</p>
-          <p class="hero-body">Other apps run a single LLM and hope. EnerZee runs deterministic rules first, an LLM that reviews them, and a critic that checks the low-confidence calls. Science questions are answered from a retrieved corpus of peer-reviewed research — with citations pulled from the papers themselves, so they can't be invented. And every memory it keeps about you is yours to inspect, edit, or delete.</p>
+          <p class="hero-body">Other apps run a single LLM and hope. Iron Chapter runs deterministic rules first, an LLM that reviews them, and a critic that checks the low-confidence calls. Science questions are answered from a retrieved corpus of peer-reviewed research — with citations pulled from the papers themselves, so they can't be invented. And every memory it keeps about you is yours to inspect, edit, or delete.</p>
           <div class="hero-ctas">
             <a href="https://testflight.apple.com/join/AESKTajK" target="_blank" rel="noopener" class="btn btn-primary-on-dark" data-testflight>Join the TestFlight →</a>
             <a href="#waitlist" class="hero-secondary-link">Or get notified when we launch publicly</a>
@@ -1268,7 +1285,7 @@
                 <img class="static" src="/assets/infinity-static-dark.png" alt="" />
               </div>
               <div class="demo-card-title">
-                Pulse · EnerZee Coach
+                Pulse · Iron Chapter Coach
                 <small><span class="live-dot"></span>online · reasoning live</small>
               </div>
             </div>
@@ -1295,7 +1312,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">Show, don't tell</span>
         <h2>Most fitness apps show you a number. We show you our work.</h2>
-        <p>Tap any coach response and EnerZee opens it up. The deterministic rule it started from, the reasoning the LLM applied, the safety checks it ran, the research it pulled, the memories about you it used. Nothing is hidden. Nothing is hallucinated quietly. If it's wrong, you can see where it went wrong — and tell it so.</p>
+        <p>Tap any coach response and Iron Chapter opens it up. The deterministic rule it started from, the reasoning the LLM applied, the safety checks it ran, the research it pulled, the memories about you it used. Nothing is hidden. Nothing is hallucinated quietly. If it's wrong, you can see where it went wrong — and tell it so.</p>
       </div>
       <div class="demo-mock on-dark">
         <div class="demo-user-msg">Should I cut carbs tonight?</div>
@@ -1318,7 +1335,7 @@
 
   <!-- ─── 3. How it thinks ─── -->
   <section class="section" id="how">
-    <div class="container">
+    <div class="container" id="how-it-works">
       <div class="section-head reveal">
         <span class="eyebrow">Architecture</span>
         <h2>Four layers, and none of them is "ask the model and hope."</h2>
@@ -1352,7 +1369,7 @@
 
   <!-- ─── 4. Modules ─── -->
   <section class="section modules-section" id="modules">
-    <div class="container">
+    <div class="container" id="features">
       <div class="section-head reveal">
         <span class="eyebrow">Product surface</span>
         <h2>Built like a real fitness operating system.</h2>
@@ -1393,7 +1410,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">Auditable</span>
         <h2>Citations you can click, from papers we actually retrieved.</h2>
-        <p>Most fitness apps say they're "science-backed" and leave it there. When you ask EnerZee a science question, it searches a corpus of <strong><span data-live="papers_cited">71,060</span> peer-reviewed references across <span data-live="journals">5,827</span> journals</strong> and answers from what it finds. The citations you see are built from the retrieved records themselves — not written by the model — so they can't be invented. A separate check re-reads the answer against those records and flags anything it can't ground.</p>
+        <p>Most fitness apps say they're "science-backed" and leave it there. When you ask Iron Chapter a science question, it searches a corpus of <strong><span data-live="papers_cited">71,060</span> peer-reviewed references across <span data-live="journals">5,827</span> journals</strong> and answers from what it finds. The citations you see are built from the retrieved records themselves — not written by the model — so they can't be invented. A separate check re-reads the answer against those records and flags anything it can't ground.</p>
       </div>
       <div class="stat-row reveal-stagger">
         <div class="stat-card">
@@ -1424,9 +1441,9 @@
       <div class="section-head reveal">
         <span class="eyebrow">Trust &amp; Evidence</span>
         <h2>The safety layer runs before the model does.</h2>
-        <p>Most of what keeps a health chatbot safe is what it never gets to say. EnerZee checks every message against thirteen risk categories first — and where one matches, the answer is written, not generated.</p>
+        <p>Most of what keeps a health chatbot safe is what it never gets to say. Iron Chapter checks every message against thirteen risk categories first — and where one matches, the answer is written, not generated.</p>
       </div>
-      <div class="trust-callout reveal">Ask a general-purpose model for dosing on a potentially lethal weight-loss chemical "for research" and it may well answer. EnerZee's guardrail intercepts that class of request before any model is called, and responds with a written refusal that carries no numbers at all.</div>
+      <div class="trust-callout reveal">Ask a general-purpose model for dosing on a potentially lethal weight-loss chemical "for research" and it may well answer. Iron Chapter's guardrail intercepts that class of request before any model is called, and responds with a written refusal that carries no numbers at all.</div>
       <p class="bench-smallprint">Covered categories include emergency symptoms, disordered-eating language, prolonged fasting, extreme calorie targets, unsafe rate-of-loss requests, pregnancy, medications, performance-enhancing drugs, injury escalation, and users under 18. A separate firewall blocks prompt-injection and off-domain requests. Not a medical device or diagnostic tool.</p>
 
       <!-- Block 2: Trust badge wall -->
@@ -1434,13 +1451,14 @@
       <div class="trust-badges reveal">
         <span class="trust-badge"><span class="ico">🔒</span> Data encrypted (in transit &amp; at rest)</span>
         <span class="trust-badge"><span class="ico">🙅</span> We never sell your data</span>
-        <a class="trust-badge" href="privacy.html"><span class="ico">🔒</span> Privacy policy</a>
-        <a class="trust-badge" href="mailto:support@enerzee.app?subject=Privacy%20request"><span class="ico">✉️</span> Privacy request support</a>
+        <a class="trust-badge" href="/privacy"><span class="ico">🔒</span> Privacy policy</a>
+        <a class="trust-badge" href="mailto:support@theironchapter.com?subject=Privacy%20request"><span class="ico">✉️</span> Privacy request support</a>
         <span class="trust-badge"><span class="ico">♿</span> Screen-reader labelled · in-app text scaling</span>
         <span class="trust-badge"><span class="ico">🔑</span> No AI keys in the app · authenticated server proxy</span>
         <span class="trust-badge pending"><span class="ico">👩‍⚕️</span> Expert-reviewed content <span class="soon">soon</span></span>
         <span class="trust-badge"><span class="ico">📱</span> Privacy disclosed on App Store &amp; Google Play</span>
       </div>
+      <p class="bench-smallprint">Google sign-in uses your email and basic profile to identify your Iron Chapter account. If you connect Fitbit in a supported version of the app, Iron Chapter requests read-only access to Google Health. Iron Chapter uses the activity, sleep, and health measurements you approve to show your history and recovery trends, and keeps those imports separate from data sent to AI coaching providers.</p>
       <p class="trust-badges-label reveal">Earned proof</p>
       <div class="trust-badges trust-badges-row2 reveal">
         <span class="trust-badge pending"><span class="ico">⭐</span> App Store rating <span class="soon">soon</span></span>
@@ -1457,7 +1475,7 @@
       </div>
 
       <!-- Block 4: Disclaimer -->
-      <p class="trust-disclaimer reveal">EnerZee is an evidence-based wellness coach, not a licensed medical provider. It does not diagnose, treat, or replace your doctor, dietitian, or emergency services. For medical, medication, pregnancy, or urgent concerns, consult a qualified professional.</p>
+      <p class="trust-disclaimer reveal">Iron Chapter is an evidence-based wellness coach, not a licensed medical provider. It does not diagnose, treat, or replace your doctor, dietitian, or emergency services. For medical, medication, pregnancy, or urgent concerns, consult a qualified professional.</p>
     </div>
   </section>
 
@@ -1466,11 +1484,11 @@
     <div class="container-narrow">
       <div class="section-head" style="text-align: left; margin-left: 0;">
         <span class="eyebrow">Memory, your way</span>
-        <h2>EnerZee remembers you. You decide what it keeps.</h2>
-        <p style="margin: 0;">Real coaches remember you. They know you train at 9pm, that paneer doesn't sit well, that you're working around a bad shoulder. EnerZee builds the same memory — but with rules most apps refuse to follow.</p>
+        <h2>Iron Chapter remembers you. You decide what it keeps.</h2>
+        <p style="margin: 0;">Real coaches remember you. They know you train at 9pm, that paneer doesn't sit well, that you're working around a bad shoulder. Iron Chapter builds the same memory — but with rules most apps refuse to follow.</p>
       </div>
       <ul class="memory-list">
-        <li><span class="check">✓</span><span>Every memory shows you <em>why</em> EnerZee believes it, and where it came from. Provenance is required, not optional.</span></li>
+        <li><span class="check">✓</span><span>Every memory shows you <em>why</em> Iron Chapter believes it, and where it came from. Provenance is required, not optional.</span></li>
         <li><span class="check">✓</span><span>Nothing learned from a conversation reaches the coach until you approve it. Suggestions sit in a review queue you control.</span></li>
         <li><span class="check">✓</span><span>No AI reads your chats to build memory. Extraction is deterministic pattern-matching, and it skips anything about other people, any contact details, and any language suggesting disordered eating.</span></li>
         <li><span class="check">✓</span><span>Health-related memories — allergies, injuries, conditions — can be excluded from coaching in one switch. You can edit any memory, pause memory entirely, or delete it for good.</span></li>
@@ -1486,12 +1504,12 @@
       <div class="section-head reveal">
         <span class="eyebrow">Wearable-aware</span>
         <h2>Your coach can see what your watch sees.</h2>
-        <p>Wearable connections depend on your platform, plan and the connections enabled in the app. Fitbit connection is deferred for the Android launch; manual logging and saved history remain available. Where supported, synced activity and recovery data can inform coaching.</p>
+        <p>Wearable connections depend on your platform, plan and the connections enabled in the app. New Fitbit connections are paused on iPhone and Android. You can still view saved Fitbit history and log manually. Where supported, synced activity and recovery data can inform coaching.</p>
       </div>
       <div class="wearables-row">
         <div class="wearable-pill">Apple Health</div>
         <div class="wearable-pill">Health Connect</div>
-        <div class="wearable-pill">Fitbit · Android deferred</div>
+        <div class="wearable-pill">Fitbit · New connections paused</div>
         <div class="wearable-pill">Whoop</div>
         <div class="wearable-pill pending">Garmin · soon</div>
         <div class="wearable-pill pending">Oura · soon</div>
@@ -1501,7 +1519,7 @@
         <span class="src">Pulse · using wearable context</span>
         "Your HRV dropped 18% overnight — I'd suggest a Zone 2 cardio swap today instead of legs."
       </div>
-      <p class="bench-smallprint" style="margin-top: 18px;">Wearable data shapes what the coach says. It does not silently rewrite your programme — load, volume and targets stay yours to change.</p>
+      <p class="bench-smallprint" style="margin-top: 18px;">Supported wearable data can shape what the coach says. You control your programme’s load, volume and targets.</p>
     </div>
   </section>
 
@@ -1528,7 +1546,7 @@
       </div>
       <p class="pricing-trust">Free, Pro and AI Pro · Optional upgrades in-app · No ads · No data sales.</p>
       <div class="pricing-cta-row">
-        <a href="https://testflight.apple.com/join/AESKTajK" target="_blank" rel="noopener" class="btn btn-primary" data-testflight>Try EnerZee free in TestFlight →</a>
+        <a href="https://testflight.apple.com/join/AESKTajK" target="_blank" rel="noopener" class="btn btn-primary" data-testflight>Try Iron Chapter free in TestFlight →</a>
       </div>
     </div>
   </section>
@@ -1543,7 +1561,7 @@
       <div class="faq-list">
         <details class="faq-item">
           <summary>How is this different from Cal AI / MyFitnessPal / MacroFactor?</summary>
-          <div class="faq-answer">Cal AI is a photo-logger; we're a reasoning coach. MyFitnessPal is a database; we're a thinking partner. MacroFactor adapts macros well but doesn't explain why or remember your context the way we do. EnerZee is built around the question those apps don't answer: <em>why</em> should you do this, and <em>what worked</em> for you last time?</div>
+          <div class="faq-answer">Cal AI is a photo-logger; we're a reasoning coach. MyFitnessPal is a database; we're a thinking partner. MacroFactor adapts macros well but doesn't explain why or remember your context the way we do. Iron Chapter is built around the question those apps don't answer: <em>why</em> should you do this, and <em>what worked</em> for you last time?</div>
         </details>
         <details class="faq-item">
           <summary>Is the science-backed claim real, or marketing?</summary>
@@ -1574,12 +1592,12 @@
           <div class="faq-answer">Both for logging — switch between kg and lbs anytime, and the active workout screen follows. Being straight with you: several progress charts still render in kg only. That's on the fix list, not a design choice.</div>
         </details>
         <details class="faq-item">
-          <summary>Can I use EnerZee without tracking food?</summary>
+          <summary>Can I use Iron Chapter without tracking food?</summary>
           <div class="faq-answer">Yes — and it's not just a setting we let you turn off. Pick a workouts-only path (or "just meal ideas," or "gentler relationship with food") during onboarding and the app reshapes: nutrition surfaces go quiet, Today focuses on movement and recovery, and the coach changes how it talks to you. You can switch modes any time in Profile.</div>
         </details>
         <details class="faq-item">
           <summary>Are you VC-backed?</summary>
-          <div class="faq-answer">Founder-funded today; opening a seed round soon. If you're an investor, <a href="mailto:rishi@enerzee.app" style="color: var(--primary-sage); text-decoration: underline;">reach out</a>.</div>
+          <div class="faq-answer">Founder-funded today; opening a seed round soon. If you're an investor, <a href="mailto:rishi@theironchapter.com" style="color: var(--primary-sage); text-decoration: underline;">reach out</a>.</div>
         </details>
       </div>
     </div>
@@ -1594,7 +1612,7 @@
       </div>
       <div class="founder-body">
         <p>I've used every fitness app on the market. Most of them treat you like a row in a spreadsheet. The good ones track macros well. The popular ones make logging fun. None of them coach.</p>
-        <p>A coach knows what you ate, what you trained, what worked last time, what your sleep did to your hunger last week. A coach can tell you <em>why</em> the recommendation is what it is — and disagree with itself when the evidence changes. That's what EnerZee is built to be. Not a tracker that bolted on a chat window, but a coach with a multi-layer brain, real memory, and the honesty to show its work.</p>
+        <p>A coach knows what you ate, what you trained, what worked last time, what your sleep did to your hunger last week. A coach can tell you <em>why</em> the recommendation is what it is — and disagree with itself when the evidence changes. That's what Iron Chapter is built to be. Not a tracker that bolted on a chat window, but a coach with a multi-layer brain, real memory, and the honesty to show its work.</p>
         <p>If that resonates, join the TestFlight. Tell us what we get wrong — and there will be things. We've deliberately kept a benchmark score off this page until it's reproducible and reviewed by someone with credentials we don't have. Grading yourself isn't evidence. Your feedback is closer to it.</p>
         <p class="founder-sig">— Rishi, founder</p>
       </div>
@@ -1606,7 +1624,7 @@
     <div class="container">
       <span class="eyebrow">Join the founding cohort</span>
       <h2 style="margin-top: 22px;">Coaching that thinks. Memory that's yours. Science you can audit.</h2>
-      <p>EnerZee is on TestFlight today. Join the founding cohort.</p>
+      <p>Iron Chapter is on TestFlight today. Join the founding cohort.</p>
       <div class="final-cta-row">
         <a href="https://testflight.apple.com/join/AESKTajK" target="_blank" rel="noopener" class="btn btn-primary-on-dark" data-testflight>Join the TestFlight →</a>
       </div>
@@ -1614,12 +1632,7 @@
         <span class="eyebrow">Or just the launch email</span>
         <h2 style="font-size: clamp(26px, 3vw, 32px); margin: 18px 0 14px;">Get launch updates</h2>
         <p style="margin-bottom: 28px;">One email per month, max. Unsubscribe in one click.</p>
-        <form class="waitlist-form" id="waitlistForm" onsubmit="handleWaitlist(event)">
-          <input type="email" placeholder="you@somewhere.com" required aria-label="Email address" />
-          <button type="submit">Notify me</button>
-        </form>
-        <p class="waitlist-microcopy">No spam — just one email when EnerZee is publicly available.</p>
-        <div class="form-success" id="formSuccess">You're on the list. We'll email when EnerZee is publicly available.</div>
+        <p class="waitlist-microcopy"><a href="https://theironchapter.com/#waitlist">Open the Iron Chapter waitlist</a> or <a href="mailto:support@theironchapter.com?subject=Android%20waitlist">email support</a>.</p>
       </div>
     </div>
   </section>
@@ -1631,7 +1644,7 @@
         <div class="footer-brand">
           <div class="footer-brand-mark">
             <img src="/assets/logo-dark-surface.png" alt="" />
-            <span>EnerZee</span>
+            <span>Iron Chapter</span>
           </div>
           <p>Built with retrieved research, memory you control, and safety that runs first.</p>
         </div>
@@ -1644,24 +1657,24 @@
         </div>
         <div class="footer-col">
           <h4>Legal</h4>
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
           <a href="/responsible-ai">Responsible AI</a>
         </div>
         <div class="footer-col">
           <h4>Support</h4>
           <a href="/help/">Help Center</a>
-          <a href="support.html">Support</a>
-          <a href="mailto:support@enerzee.app">support@enerzee.app</a>
+          <a href="/support">Support</a>
+          <a href="mailto:support@theironchapter.com">support@theironchapter.com</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 K2R2 Brands Private Limited. EnerZee is a product of K2R2 Brands Private Limited.</span>
+        <span>© 2026 K2R2 Brands Private Limited. Iron Chapter is a product of K2R2 Brands Private Limited.</span>
         <div class="links">
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
           <a href="/help/">Help</a>
-          <a href="support.html">Support</a>
+          <a href="/support">Support</a>
           <a href="https://platform.fatsecret.com">Powered by fatsecret Platform API</a>
         </div>
       </div>
@@ -1780,42 +1793,6 @@
       }
     })();
 
-    function handleWaitlist(e) {
-      e.preventDefault();
-      const form = e.target;
-      const email = form.querySelector('input').value;
-      const btn = form.querySelector('button');
-      const origText = btn.textContent;
-      btn.textContent = 'Joining...';
-      btn.disabled = true;
-
-      fetch('https://formsubmit.co/ajax/support@enerzee.app', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          email: email,
-          _subject: 'New EnerZee Waitlist Signup',
-          _template: 'table'
-        })
-      })
-      .then(r => r.json())
-      .then(data => {
-        if (data.success) {
-          form.style.display = 'none';
-          document.querySelector('.waitlist-microcopy').style.display = 'none';
-          document.getElementById('formSuccess').style.display = 'block';
-        } else {
-          btn.textContent = origText;
-          btn.disabled = false;
-          alert('Something went wrong. Please try again.');
-        }
-      })
-      .catch(() => {
-        btn.textContent = origText;
-        btn.disabled = false;
-        alert('Network error. Please check your connection and try again.');
-      });
-    }
   </script>
 </body>
 </html>
