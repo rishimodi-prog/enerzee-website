@@ -9,9 +9,10 @@ from urllib.parse import urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PROTECTED_FILES = {
-    "terms.html": "885a5815536544d76da104e07248a504e65f5233f202b76d26bb6606d95ad2fa",
-    "privacy.html": "7a56beddba48b3000500e3a3a31d1387837d0f5a67373557715e9b36765a5266",
-    "delete-account.html": "c0482f63665e980e488caea2aa2d4d2896f22fef2806cc578f8ace11f79ed0bb",
+    "terms.html": "e7b66f79f21eba8caf6ee94ecbd79274be4be45138974359244f961676d8af7b",
+    "privacy.html": "d2f7cd5feef12de1ea11cef72ebfacaadc4834c4da0d50c9d59d60020cd47591",
+    "delete-account.html": "739fdf86d0140d3fc5aabf604e9fd1029d9ac9045849681a3ca4051b038d8aad",
+    "delete-account/index.html": "615f655fb0aa0374e0e4f6b04206ea3b399d56edef025ad5812f4f12007d9318",
 }
 VOID_ELEMENTS = {
     "area", "base", "br", "col", "embed", "hr", "img", "input", "link",
@@ -94,7 +95,7 @@ class SupportNavigationTests(unittest.TestCase):
         cls.root_deletion = Page((ROOT / "delete-account.html").read_text(encoding="utf-8"))
 
     def test_free_has_no_ongoing_or_extra_hosted_chat_trial(self):
-        answer = self.faq["Is EnerZee free to use?"]
+        answer = self.faq["Is Iron Chapter free to use?"]
         self.assertIn("core food and workout tracking", answer)
         self.assertIn("basic Progress", answer)
         self.assertIn("does not include an ongoing", answer)
@@ -103,7 +104,7 @@ class SupportNavigationTests(unittest.TestCase):
     def test_pro_is_separate_from_hosted_ai_pro(self):
         answer = self.faq["How do Pro and AI Pro differ?"]
         self.assertIn("Connected AI (MCP)", answer)
-        self.assertIn("does not by itself include EnerZee-hosted AI Coach chat", answer)
+        self.assertIn("does not by itself include AI Coach chat hosted by Iron Chapter", answer)
         self.assertIn("AI Pro includes Pro features", answer)
         self.assertIn("up to 100 Coach messages per day", answer)
         self.assertIn("Other AI features have their own limits", answer)
@@ -129,44 +130,26 @@ class SupportNavigationTests(unittest.TestCase):
         self.assertIn("saved entry and totals", answer)
         self.assertNotIn("logs everything automatically", answer)
 
-    def test_legal_documents_and_original_deletion_page_preserve_scope(self):
+    def test_legal_documents_and_deletion_page_match_reviewed_publication(self):
         for name, expected in PROTECTED_FILES.items():
             with self.subTest(file=name):
                 actual = (ROOT / name).read_bytes()
-                if name == "delete-account.html":
-                    age_screen_guidance = (
-                        b"    <p>If EnerZee shows <strong>Confirm your age</strong> or "
-                        b"<strong>Your account is safely paused</strong>, choose "
-                        b"<strong>Delete account</strong> on that screen and follow the "
-                        b"confirmation prompts.</p>\n"
-                    )
-                    self.assertEqual(actual.count(age_screen_guidance), 1)
-                    actual = actual.replace(age_screen_guidance, b"", 1)
-                    actual = actual.replace(b"support@enerzee.app", b"privacy@enerzee.app")
                 self.assertEqual(hashlib.sha256(actual).hexdigest(), expected)
 
-    def test_support_form_keeps_existing_required_fields_and_no_native_action(self):
-        form = next(self.support.root.find_all("form"))
-        self.assertEqual(form.attrs.get("id"), "contactForm")
-        self.assertEqual(form.attrs.get("onsubmit"), "handleContact(event)")
-        self.assertNotIn("action", form.attrs)
-        fields = {
-            field.attrs.get("id"): field
-            for tag in ("input", "select", "textarea")
-            for field in form.find_all(tag)
-        }
-        self.assertEqual(set(fields), {"name", "email", "topic", "message"})
-        self.assertEqual(fields["email"].attrs.get("type"), "email")
-        self.assertTrue(all("required" in field.attrs for field in fields.values()))
+    def test_support_hands_off_to_the_branded_form(self):
+        self.assertEqual(list(self.support.root.find_all("form")), [])
+        destinations = {link.attrs["href"] for link in self.support.root.find_all("a")}
+        self.assertIn("https://theironchapter.com/support", destinations)
+        self.assertIn("mailto:support@theironchapter.com", destinations)
 
     def test_deletion_navigation_targets_site_root(self):
         expected = {
-            "EnerZee": "/index.html",
+            "Iron Chapter": "/index.html",
             "\u2190 Back to Home": "/index.html",
             "Home": "/index.html",
             "Privacy Policy": "/privacy.html",
-            "Terms of Use": "/terms.html",
-            "Support": "/support.html",
+            "Terms of Use": "/terms",
+            "Support": "/support",
         }
         links = list(self.deletion.root.find_all("a"))
         for label, destination in expected.items():
@@ -180,17 +163,16 @@ class SupportNavigationTests(unittest.TestCase):
                     resolved = urlsplit(urljoin(base, matches[0].attrs["href"]))
                     self.assertEqual(resolved.netloc, "enerzee.app")
                     self.assertEqual(resolved.path, destination)
-                    self.assertTrue((ROOT / resolved.path.lstrip("/")).is_file())
+                    member = ROOT / resolved.path.lstrip("/")
+                    self.assertTrue(member.is_file() or (member / "index.html").is_file())
 
-    def test_navigation_also_works_in_local_file_preview(self):
-        base = (ROOT / "delete-account/index.html").as_uri()
-        for area in ("nav", "footer"):
-            for region in self.deletion.root.find_all(area):
-                for link in region.find_all("a"):
-                    with self.subTest(href=link.attrs["href"]):
-                        resolved = urlsplit(urljoin(base, link.attrs["href"]))
-                        self.assertEqual(resolved.scheme, "file")
-                        self.assertTrue(Path(resolved.path).is_file())
+    def test_extensionless_pages_match_the_historical_html_aliases(self):
+        for name in ("download", "privacy", "support", "terms"):
+            with self.subTest(page=name):
+                self.assertEqual(
+                    (ROOT / name / "index.html").read_bytes(),
+                    (ROOT / (name + ".html")).read_bytes(),
+                )
 
     def test_deletion_instructions_and_cancellation_warning_unchanged(self):
         actual = next(self.deletion.root.find_all(class_name="legal"))
@@ -198,7 +180,7 @@ class SupportNavigationTests(unittest.TestCase):
         self.assertEqual(actual.snapshot(), original.snapshot())
         self.assertIn("does not automatically cancel", actual.text())
         links = [a.attrs["href"] for a in actual.find_all("a")]
-        self.assertIn("mailto:support@enerzee.app?subject=Delete%20my%20EnerZee%20account", links)
+        self.assertIn("mailto:support@theironchapter.com?subject=Delete%20my%20Iron%20Chapter%20account", links)
 
 
 if __name__ == "__main__":
